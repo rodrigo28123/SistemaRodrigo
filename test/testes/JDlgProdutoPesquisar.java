@@ -3,35 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package testes;
 
-import bean.Usuarios;
-import dao.UsuariosDAO;
+import view.JDlgProduto;
+import bean.ProdutoRal;
+import dao.ProdutoDAO;
 import java.util.List;
-import view.controle.UsuariosControle;
+import view.JDlgProduto;
+import view.controle.ProdutoControle;
 
 /**
  *
  * @author u07329163139
  */
-public class JDlgUsuarioPesquisar extends javax.swing.JDialog {
+public class JDlgProdutoPesquisar extends javax.swing.JDialog {
 
     /**
-     * Creates new form JDlgUsuarioPesquisar1
+     * Creates new form JDlgProdutoPesquisar
      */
-    private JDlgUsuario JDlgUsuario;
-    UsuariosControle usuarioControle;
+    private JDlgProduto JDlgProduto;
+  ProdutoControle produtoControle;
     
-    public JDlgUsuarioPesquisar(java.awt.Frame parent, boolean modal) {
+    
+    public JDlgProdutoPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        usuarioControle = new UsuariosControle();
-        UsuariosDAO usuarioDAO = new UsuariosDAO();
-        List lista = usuarioDAO.listAll();
-        usuarioControle.setList(lista);
+        produtoControle = new ProdutoControle();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        List lista = produtoDAO.listAll();
+        produtoControle.setList(lista);
         
-        jTable1.setModel(usuarioControle);
+        jTable1.setModel(produtoControle);
     }
 
     /**
@@ -81,23 +84,31 @@ public class JDlgUsuarioPesquisar extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(242, Short.MAX_VALUE)
                 .addComponent(jBtnOkay)
                 .addGap(5, 5, 5)
                 .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(33, 33, 33))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(251, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnOkay)
                     .addComponent(jBtnCancelar))
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(69, Short.MAX_VALUE)))
         );
 
         pack();
@@ -106,8 +117,8 @@ public class JDlgUsuarioPesquisar extends javax.swing.JDialog {
     private void jBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkayActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
-        Usuarios usuarios = usuarioControle.getBean(rowSel);
-        JDlgUsuario.beanView(usuarios);
+        ProdutoRal produto = produtoControle.getBean(rowSel);
+        JDlgProduto.beanView(produto);
         setVisible(false);
     }//GEN-LAST:event_jBtnOkayActionPerformed
 
@@ -133,21 +144,20 @@ public class JDlgUsuarioPesquisar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgProdutoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgProdutoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgProdutoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgProdutoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgUsuarioPesquisar dialog = new JDlgUsuarioPesquisar(new javax.swing.JFrame(), true);
+                JDlgProdutoPesquisar dialog = new JDlgProdutoPesquisar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -23,16 +23,16 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="782" max="32767" attributes="0"/>
-          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
+          <Component id="jScrollPane1" alignment="0" pref="706" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jScrollPane1" min="-2" pref="283" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="193" max="-2" attributes="0"/>
+              <EmptySpace pref="96" max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" pref="46" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,6 +72,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jBtnIncluir">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/incluir.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Incluir"/>
           </Properties>
           <Events>
@@ -80,6 +83,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBtnAlterar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/alterar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Alterar"/>
           </Properties>
           <Events>
@@ -88,6 +94,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBtnExcluir">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/Excluir.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Excluir"/>
           </Properties>
           <Events>

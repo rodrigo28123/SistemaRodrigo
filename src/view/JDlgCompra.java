@@ -6,13 +6,15 @@
 package view;
 
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import javax.swing.JOptionPane;
+import tools.Util;
 
 /**
  *
  * @author u07679183120
  */
 public class JDlgCompra extends javax.swing.JDialog {
-
+Boolean incluindo;
     /**
      * Creates new form JDlgUsuario
      */
@@ -21,54 +23,66 @@ public class JDlgCompra extends javax.swing.JDialog {
         initComponents();
           setTitle("Compra");
           setLocationRelativeTo(null);
-          desabilitar();
+          habilitar(false);
     }
     
-   public void habilitar(){
-  
-    jTxtValorTotal.setEnabled(true);
-    jTxtProduto.setEnabled(true);
-    jFmtDataVenda.setEnabled(true);
-   
-    jTxtEnderecoEntrega.setEnabled(true);
-   
-   
+//   public void habilitar(){
+//  
+//    jTxtValorTotal.setEnabled(true);
+//    jTxtFornecedor.setEnabled(true);
+//    jTxtFuncionario.setEnabled(true);
+//   
+//    jTxtDataCompra.setEnabled(true);
+//   
+//   
+//    
+//    jBtnConfirmar.setEnabled(true);
+//    jBtnCancelar.setEnabled(true);
+//    
+//   jBtnIncluir.setEnabled(false);
+//   jBtnAlterar.setEnabled(false);
+//   jBtnExcluir.setEnabled(false);
+//   jBtnPesquisar.setEnabled(false);
+//   
+//}
+//   public void desabilitar(){
+//jTxtValorTotal.setEnabled(false);
+//    jTxtFornecedor.setEnabled(false);
+//    jTxtFuncionario.setEnabled(false);
+//   
+//    jTxtDataCompra.setEnabled(false);
+//    
+//        
+//       jBtnConfirmar.setEnabled(false);
+//       jBtnCancelar.setEnabled(false);
+//       
+//        jBtnIncluir.setEnabled(true);
+//        jBtnAlterar.setEnabled(true);
+//        jBtnExcluir.setEnabled(true);
+//        jBtnPesquisar.setEnabled(true);
+//    }
+//    
+//   public void limparCampo(){
+//  
+//    jTxtValorTotal.setText(null);
+//    jTxtFornecedor.setText(null);
+//    jTxtFuncionario.setText(null);
+//    
+//    jTxtDataCompra.setText(null);
+//   
+//   }
     
-    jBtnConfirmar.setEnabled(true);
-    jBtnCancelar.setEnabled(true);
     
-   jBtnIncluir.setEnabled(false);
-   jBtnAlterar.setEnabled(false);
-   jBtnExcluir.setEnabled(false);
-   jBtnPesquisar.setEnabled(false);
-   
+    public void habilitar(boolean valor) {   
+        Util.habilitar(valor, jTxtCodigoCompra, jTxtValorTotal, jTxtFornecedor, jTxtFuncionario, jTxtDataCompra, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(!valor, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+
+    }
+    
+public void limpar(){   
+        Util.limparCampo(jTxtCodigoCompra, jTxtValorTotal, jTxtFornecedor, jTxtFuncionario, jTxtDataCompra);      
 }
-   public void desabilitar(){
-jTxtValorTotal.setEnabled(false);
-    jTxtProduto.setEnabled(false);
-    jFmtDataVenda.setEnabled(false);
-   
-    jTxtEnderecoEntrega.setEnabled(false);
-    
-        
-       jBtnConfirmar.setEnabled(false);
-       jBtnCancelar.setEnabled(false);
-       
-        jBtnIncluir.setEnabled(true);
-        jBtnAlterar.setEnabled(true);
-        jBtnExcluir.setEnabled(true);
-        jBtnPesquisar.setEnabled(true);
-    }
-    
-   public void limparCampo(){
-  
-    jTxtValorTotal.setText(null);
-    jTxtProduto.setText(null);
-    jFmtDataVenda.setText(null);
-    
-    jTxtEnderecoEntrega.setText(null);
-   
-   }
+
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,30 +96,30 @@ jTxtValorTotal.setEnabled(false);
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jFmtDataVenda = new javax.swing.JFormattedTextField();
+        jTxtFuncionario = new javax.swing.JFormattedTextField();
         jBtnIncluir = new javax.swing.JButton();
         jBtnAlterar = new javax.swing.JButton();
         jBtnExcluir = new javax.swing.JButton();
         jBtnConfirmar = new javax.swing.JButton();
         jBtnPesquisar = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
-        jTxtProduto = new javax.swing.JTextField();
+        jTxtFornecedor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTxtEnderecoEntrega = new javax.swing.JTextField();
+        jTxtDataCompra = new javax.swing.JTextField();
         jTxtValorTotal = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTxtCodigoCompra = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setText("Valor Total");
 
-        jLabel6.setText("Data da Compra");
+        jLabel6.setText("funcionario");
 
-        jFmtDataVenda.addActionListener(new java.awt.event.ActionListener() {
+        jTxtFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtDataVendaActionPerformed(evt);
+                jTxtFuncionarioActionPerformed(evt);
             }
         });
 
@@ -157,9 +171,21 @@ jTxtValorTotal.setEnabled(false);
             }
         });
 
-        jLabel3.setText("Produto");
+        jTxtFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtFornecedorActionPerformed(evt);
+            }
+        });
 
-        jLabel9.setText("Endereço de entrega");
+        jLabel3.setText("fornecedor");
+
+        jLabel9.setText("data da compra");
+
+        jTxtDataCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtDataCompraActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Código de Compra");
 
@@ -175,7 +201,7 @@ jTxtValorTotal.setEnabled(false);
                             .addComponent(jLabel2)
                             .addComponent(jTxtValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
-                            .addComponent(jTxtEnderecoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBtnIncluir)
@@ -195,10 +221,10 @@ jTxtValorTotal.setEnabled(false);
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3)
-                            .addComponent(jFmtDataVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                            .addComponent(jTxtProduto)
+                            .addComponent(jTxtFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                            .addComponent(jTxtFornecedor)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1))
+                            .addComponent(jTxtCodigoCompra))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -211,15 +237,15 @@ jTxtValorTotal.setEnabled(false);
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtCodigoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFmtDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -227,7 +253,7 @@ jTxtValorTotal.setEnabled(false);
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtEnderecoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnIncluir)
@@ -242,23 +268,34 @@ jTxtValorTotal.setEnabled(false);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFmtDataVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataVendaActionPerformed
+    private void jTxtFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtFuncionarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtDataVendaActionPerformed
+    }//GEN-LAST:event_jTxtFuncionarioActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
+        habilitar(true);
+        incluindo = false;
+        
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-   
+    int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
+                "Pergunta", JOptionPane.YES_NO_OPTION );
+                
+        if( resp == JOptionPane.YES_OPTION){
+          
+            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
+        }else {
+          Util.mensagem("Exclusão não efetuada");
+        }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-        desabilitar();
-        limparCampo();
+        habilitar(false);
+        limpar();
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -267,14 +304,23 @@ jTxtValorTotal.setEnabled(false);
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        desabilitar();
-        limparCampo();
+        habilitar(false);
+        limpar();
+         JOptionPane.showMessageDialog(null, "Operação Cancelada");
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        habilitar();
+        habilitar(true);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
+
+    private void jTxtFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtFornecedorActionPerformed
+
+    private void jTxtDataCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtDataCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtDataCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,16 +374,16 @@ jTxtValorTotal.setEnabled(false);
     private javax.swing.JButton jBtnExcluir;
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnPesquisar;
-    private javax.swing.JFormattedTextField jFmtDataVenda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTxtEnderecoEntrega;
-    private javax.swing.JTextField jTxtProduto;
+    private javax.swing.JTextField jTxtCodigoCompra;
+    private javax.swing.JTextField jTxtDataCompra;
+    private javax.swing.JTextField jTxtFornecedor;
+    private javax.swing.JFormattedTextField jTxtFuncionario;
     private javax.swing.JTextField jTxtValorTotal;
     // End of variables declaration//GEN-END:variables
 }

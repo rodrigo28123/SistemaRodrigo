@@ -3,35 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
-
-import bean.Cliente;
-import dao.ClienteDAO;
-import java.util.List;
-import view.controle.ClienteControle;
+package testes;
 
 /**
  *
  * @author u07329163139
  */
-public class JDlgClientePesquisar extends javax.swing.JDialog {
+public class JDlgFuncionarioPesquisar extends javax.swing.JDialog {
 
     /**
-     * Creates new form JDlgClientePesquisar
+     * Creates new form JDlgFuncionarioPesquisar
      */
-    private JDlgCliente JDlgCliente;
-    ClienteControle clienteControle;
-    
-    public JDlgClientePesquisar(java.awt.Frame parent, boolean modal) {
+    public JDlgFuncionarioPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
-        clienteControle = new ClienteControle();
-        ClienteDAO clienteDAO = new ClienteDAO();
-        List lista = clienteDAO.listAll();
-        clienteControle.setList(lista);
-        
-        jTable1.setModel(clienteControle);
     }
 
     /**
@@ -64,11 +49,6 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTable1);
 
         jBtnOkay.setText("Okay");
-        jBtnOkay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnOkayActionPerformed(evt);
-            }
-        });
 
         jBtnCancelar.setText("Cancelar");
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,44 +61,30 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBtnOkay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBtnCancelar)
-                .addContainerGap())
+                .addGap(8, 8, 8))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnOkay)
                     .addComponent(jBtnCancelar))
-                .addContainerGap())
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkayActionPerformed
-        // TODO add your handling code here:
-//          int rowSel = jTable1.getSelectedRow();
-//        Cliente cliente= clienteControle.getBean(rowSel);
-//        JDlgCliente.beanView(cliente);
-//        setVisible(false);
- int rowSel = jTable1.getSelectedRow();
-        JDlgCliente.cliente = clienteControle.getBean(rowSel);
-        JDlgCliente.beanView(JDlgCliente.cliente);
-        
-        setVisible(false);
-    }//GEN-LAST:event_jBtnOkayActionPerformed
-
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-         setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
@@ -138,20 +104,20 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFuncionarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFuncionarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFuncionarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFuncionarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgClientePesquisar dialog = new JDlgClientePesquisar(new javax.swing.JFrame(), true);
+                JDlgFuncionarioPesquisar dialog = new JDlgFuncionarioPesquisar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

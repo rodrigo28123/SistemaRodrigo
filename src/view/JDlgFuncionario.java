@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package view;
-import bean.Funcionario;
+//import testes.JDlgUsuario;
+import bean.FuncionarioRal;
 import dao.FuncionarioDAO;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.text.ParseException;
@@ -15,6 +16,7 @@ import javax.swing.text.MaskFormatter;
 import javax.swing.JOptionPane;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import tools.Util;
 /**
  *
  * @author u07329163139
@@ -30,79 +32,100 @@ MaskFormatter mascaraCpf;
         initComponents();
           setTitle("Funcionario");
           setLocationRelativeTo(null);
-          desabilitar();
+          habilitar(false);
+          
            try {
              mascaraCpf = new MaskFormatter("###.###.###-##");
          } catch (ParseException ex) {
-             Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(JDlgFuncionario.class.getName()).log(Level.SEVERE, null, ex);
          }
-        jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
+          jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
          
-    }
-    
-   public void habilitar(){
-    jTxtCodigoFuncionario.setEnabled(true);
-    jTxtNome.setEnabled(true);
-    jFmtCpf.setEnabled(true);
-    jTxtEmail.setEnabled(true);
-    jFmtRg.setEnabled(true);
-    
-   
-    
-    jBtnConfirmar.setEnabled(true);
-    jBtnCancelar.setEnabled(true);
-    
-   jBtnIncluir.setEnabled(false);
-   jBtnAlterar.setEnabled(false);
-   jBtnExcluir.setEnabled(false);
-   jBtnPesquisar.setEnabled(false);
-   
-}
-   public void desabilitar(){
-    jTxtCodigoFuncionario.setEnabled(false);
-    jTxtNome.setEnabled(false);
-    jFmtCpf.setEnabled(false);
-    jTxtEmail.setEnabled(false);
-    jFmtRg.setEnabled(false);
- 
-   
         
-       jBtnConfirmar.setEnabled(false);
-       jBtnCancelar.setEnabled(false);
-       
-        jBtnIncluir.setEnabled(true);
-        jBtnAlterar.setEnabled(true);
-        jBtnExcluir.setEnabled(true);
-        jBtnPesquisar.setEnabled(true);
     }
     
-   public void limparCampo(){
-    jTxtCodigoFuncionario.setText(null);
-    jTxtNome.setText(null);
-    jFmtCpf.setText(null);
-    jTxtEmail.setText(null);
-    jFmtRg.setText(null);
-   
-   }
-   public Funcionario viewBean(){
-   Funcionario funcionario = new Funcionario();
+//   public void habilitar(){
+//    jTxtCodigoFuncionario.setEnabled(true);
+//    jTxtNome.setEnabled(true);
+//    jFmtCpf.setEnabled(true);
+//    jTxtEmail.setEnabled(true);
+//    jFmtRg.setEnabled(true);
+//    
+//   
+//    
+//    jBtnConfirmar.setEnabled(true);
+//    jBtnCancelar.setEnabled(true);
+//    
+//   jBtnIncluir.setEnabled(false);
+//   jBtnAlterar.setEnabled(false);
+//   jBtnExcluir.setEnabled(false);
+//   jBtnPesquisar.setEnabled(false);
+//   
+//}
+//   public void desabilitar(){
+//    jTxtCodigoFuncionario.setEnabled(false);
+//    jTxtNome.setEnabled(false);
+//    jFmtCpf.setEnabled(false);
+//    jTxtEmail.setEnabled(false);
+//    jFmtRg.setEnabled(false);
+// 
+//   
+//        
+//       jBtnConfirmar.setEnabled(false);
+//       jBtnCancelar.setEnabled(false);
+//       
+//        jBtnIncluir.setEnabled(true);
+//        jBtnAlterar.setEnabled(true);
+//        jBtnExcluir.setEnabled(true);
+//        jBtnPesquisar.setEnabled(true);
+//    }
+//    
+//   public void limparCampo(){
+//    jTxtCodigoFuncionario.setText(null);
+//    jTxtNome.setText(null);
+//    jFmtCpf.setText(null);
+//    jTxtEmail.setText(null);
+//    jFmtRg.setText(null);
+//   
+//   }
+    
+    
+       public void habilitar(boolean valor) {   
+        Util.habilitar(valor, jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, 
+                jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
+     Util.habilitar(!valor, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+
+    }
+    
+public void limpar(){   
+        Util.limparCampo( jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg,
+                jTxtEmail );      
+}
+    
+    
+    
+    
+    
+    
+   public FuncionarioRal viewBean(){
+   FuncionarioRal funcionario = new FuncionarioRal();
      int id = Integer.valueOf( jTxtCodigoFuncionario.getText());
-     funcionario.setId_funcionario( id );
-     funcionario.setNome( jTxtNome.getText());
-     funcionario.setCpf( jFmtCpf.getText());
-     funcionario.setEmail( jTxtEmail.getText());
-     funcionario.setRg(jFmtRg.getText());
+     funcionario.setIdfuncionarioRal( id );
+     funcionario.setNomeRal( jTxtNome.getText());
+     funcionario.setCpfRal( jFmtCpf.getText());
+     funcionario.setEmailRal( jTxtEmail.getText());
+     funcionario.setRgRal(jFmtRg.getText());
      
      return funcionario;
    }
    
-   public void beanView(Funcionario funcionario) {
-        String cad = String.valueOf(funcionario.getId_funcionario());
+   public void beanView(FuncionarioRal funcionario) {
+        String cad = String.valueOf(funcionario.getIdfuncionarioRal());
       jTxtCodigoFuncionario.setText(cad);
-      jTxtNome.setText(funcionario.getNome());
-      jFmtCpf.setText( funcionario.getCpf());
-      jTxtEmail.setText( funcionario.getEmail());
-      jFmtRg.setText( funcionario.getRg());
+      jTxtNome.setText(funcionario.getNomeRal());
+      jFmtCpf.setText( funcionario.getCpfRal());
+      jTxtEmail.setText( funcionario.getEmailRal());
+      jFmtRg.setText( funcionario.getRgRal());
    }
    
     /**
@@ -289,8 +312,7 @@ MaskFormatter mascaraCpf;
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        habilitar();
-        
+         habilitar(true);
         incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
@@ -300,7 +322,7 @@ MaskFormatter mascaraCpf;
                 "Pergunta", JOptionPane.YES_NO_OPTION );
                 
         if( resp == JOptionPane.YES_OPTION){
-          Funcionario funcionario = viewBean();
+          FuncionarioRal funcionario = viewBean();
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
             funcionarioDAO.delete(funcionario);
             JOptionPane.showMessageDialog(null, "Exclusão efetuada");
@@ -311,7 +333,7 @@ MaskFormatter mascaraCpf;
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-           Funcionario funcionario = viewBean();       
+           FuncionarioRal funcionario = viewBean();       
      FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
      
     if (incluindo == true){
@@ -322,7 +344,7 @@ MaskFormatter mascaraCpf;
         funcionarioDAO.update(funcionario);
     }
    
-     desabilitar();
+     habilitar(false);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -330,21 +352,21 @@ MaskFormatter mascaraCpf;
         String resp = JOptionPane.showInputDialog(null, "Entre com a chave primária");
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         int id = Integer.valueOf(resp);
-       Funcionario funcionario =(Funcionario) funcionarioDAO.list( id );
+       FuncionarioRal funcionario =(FuncionarioRal) funcionarioDAO.list( id );
         beanView(funcionario);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        desabilitar();
-        limparCampo();
+      habilitar(false);
+        limpar();
         JOptionPane.showMessageDialog(null, "Operação Cancelada");
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-     habilitar();
-        limparCampo();
+     habilitar(true);
+        limpar();
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package testes;
 
 /**
  *
@@ -35,9 +35,14 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        JBtnOkay.setText("jButton1");
+        JBtnOkay.setText("Okay");
+        JBtnOkay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBtnOkayActionPerformed(evt);
+            }
+        });
 
-        jBtnCancelar.setText("jButton2");
+        jBtnCancelar.setText("Cancelar");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,6 +82,10 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnOkayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBtnOkayActionPerformed
 
     /**
      * @param args the command line arguments

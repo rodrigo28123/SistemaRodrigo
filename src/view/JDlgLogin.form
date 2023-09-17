@@ -115,17 +115,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jTxtUsuario">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="ledesma ou livros"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtUsuarioActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPwfSenha">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="senha123"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPwfSenhaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

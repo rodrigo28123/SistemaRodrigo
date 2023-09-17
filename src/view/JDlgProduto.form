@@ -48,7 +48,7 @@
                               <Component id="jTxtNome" alignment="0" min="-2" pref="607" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTxtGenero" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                                      <Component id="jTxtTamanho" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                                       <Component id="jTxtPreco" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                                       <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -98,7 +98,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTxtGenero" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTxtTamanho" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTxtDescricao" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -219,14 +219,14 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtPrecoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jTxtGenero">
+    <Component class="javax.swing.JFormattedTextField" name="jTxtTamanho">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtGeneroActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtTamanhoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel14">
       <Properties>
-        <Property name="text" type="java.lang.String" value="G&#xea;nero"/>
+        <Property name="text" type="java.lang.String" value="tamanho"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

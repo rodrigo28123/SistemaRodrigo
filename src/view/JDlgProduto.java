@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package view;
-import bean.Produto;
+import bean.ProdutoRal;
 import dao.ProdutoDAO;
 import javax.swing.JOptionPane;
 import static java.awt.Frame.MAXIMIZED_BOTH;
@@ -15,6 +15,8 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import tools.Util;
+
 /**
 /**
  *
@@ -30,89 +32,103 @@ public class JDlgProduto extends javax.swing.JDialog {
         initComponents();
           setTitle("Produto");
           setLocationRelativeTo(null);
-          desabilitar();
+          habilitar(false);
     }
     
-   public void habilitar(){
-    jTxtCodigoProduto.setEnabled(true);
-    jTxtNome.setEnabled(true);
-    jTxtQuantidade.setEnabled(true);
-    jTxtDescricao.setEnabled(true);
-   
-     jTxtGenero.setEnabled(true);
+//   public void habilitar(){
+//    jTxtCodigoProduto.setEnabled(true);
+//    jTxtNome.setEnabled(true);
+//    jTxtQuantidade.setEnabled(true);
+//    jTxtDescricao.setEnabled(true);
+//   
+//     jTxtTamanho.setEnabled(true);
+//    
+//    
+//   
+//    jTxtPreco.setEnabled(true);
+//
+//
+//    
+//    jBtnConfirmar.setEnabled(true);
+//    jBtnCancelar.setEnabled(true);
+//    
+//   jBtnIncluir.setEnabled(false);
+//   jBtnAlterar.setEnabled(false);
+//   jBtnExcluir.setEnabled(false);
+//   jBtnPesquisar.setEnabled(false);
+//   
+//}
+//   public void desabilitar(){
+//    jTxtCodigoProduto.setEnabled(false);
+//    jTxtNome.setEnabled(false);
+//    jTxtQuantidade.setEnabled(false);
+//    jTxtDescricao.setEnabled(false);
+//    
+//    
+//    jTxtTamanho.setEnabled(false);
+//    
+//    jTxtPreco.setEnabled(false);
+//   
+//        
+//       jBtnConfirmar.setEnabled(false);
+//       jBtnCancelar.setEnabled(false);
+//       
+//        jBtnIncluir.setEnabled(true);
+//        jBtnAlterar.setEnabled(true);
+//        jBtnExcluir.setEnabled(true);
+//        jBtnPesquisar.setEnabled(true);
+//    }
+//    
+//   public void limparCampo(){ 
+//    jTxtCodigoProduto.setText(null);
+//    jTxtNome.setText(null);
+//    jTxtQuantidade.setText(null);
+//    jTxtDescricao.setText(null);
+//    jTxtTamanho.setText(null);
+//    
+//    
+//   
+//    
+//    jTxtPreco.setText(null);
+//  
+//   }
     
     
-   
-    jTxtPreco.setEnabled(true);
+    
+     public void habilitar(boolean valor) {   
+        Util.habilitar(valor, jTxtCodigoProduto, jTxtNome,  jTxtQuantidade, jTxtDescricao, 
+                jTxtTamanho, jTxtPreco ,  jBtnConfirmar, jBtnCancelar);
+     Util.habilitar(!valor, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
-
+    }
     
-    jBtnConfirmar.setEnabled(true);
-    jBtnCancelar.setEnabled(true);
-    
-   jBtnIncluir.setEnabled(false);
-   jBtnAlterar.setEnabled(false);
-   jBtnExcluir.setEnabled(false);
-   jBtnPesquisar.setEnabled(false);
-   
+public void limpar(){   
+        Util.limparCampo( jTxtCodigoProduto, jTxtNome,  jTxtQuantidade, jTxtDescricao, jTxtTamanho, jTxtPreco );      
 }
-   public void desabilitar(){
-    jTxtCodigoProduto.setEnabled(false);
-    jTxtNome.setEnabled(false);
-    jTxtQuantidade.setEnabled(false);
-    jTxtDescricao.setEnabled(false);
-    
-    
-    jTxtGenero.setEnabled(false);
-    
-    jTxtPreco.setEnabled(false);
-   
-        
-       jBtnConfirmar.setEnabled(false);
-       jBtnCancelar.setEnabled(false);
-       
-        jBtnIncluir.setEnabled(true);
-        jBtnAlterar.setEnabled(true);
-        jBtnExcluir.setEnabled(true);
-        jBtnPesquisar.setEnabled(true);
-    }
-    
-   public void limparCampo(){ 
-    jTxtCodigoProduto.setText(null);
-    jTxtNome.setText(null);
-    jTxtQuantidade.setText(null);
-    jTxtDescricao.setText(null);
-    jTxtGenero.setText(null);
-    
     
    
-    
-    jTxtPreco.setText(null);
-  
-   }
-   
-     public Produto viewBean(){
-   Produto produto = new Produto();
+     public ProdutoRal viewBean(){
+   ProdutoRal produto = new ProdutoRal();
      int id = Integer.valueOf( jTxtCodigoProduto.getText());
-     produto.setId_produto( id );
-     produto.setNome( jTxtNome.getText());
-     produto.setQuantidade( jTxtQuantidade.getText());
-     produto.setDescricao( jTxtDescricao.getText());
+     produto.setIdprodutoRal( id );
+     produto.setNomeRal( jTxtNome.getText());
+    // produto.setQuantidadeRal( jTxtQuantidade.getText());
+     produto.setDescricaoRal( jTxtDescricao.getText());
    
-     produto.setGenero(jTxtGenero .getText());
-     produto.setPreço( jTxtPreco.getText());
+     produto.setTamanhoRal(jTxtTamanho .getText());
+     produto.setPrecoRal( jTxtPreco.getText());
    
      return produto; 
 
 }
-   public void beanView(Produto produto) {
-       String cad = String.valueOf(produto.getId_produto());
+   public void beanView(ProdutoRal produto) {
+       String cad = String.valueOf(produto.getIdprodutoRal());
        jTxtCodigoProduto.setText(cad);
-       jTxtNome.setText( produto.getNome());
-       jTxtQuantidade.setText( produto.getQuantidade());
-       jTxtDescricao.setText( produto.getDescricao());
-       jTxtGenero.setText( produto.getGenero());
-       jTxtPreco.setText( produto.getPreço());
+       jTxtNome.setText( produto.getNomeRal());
+      // jTxtQuantidade.setText( produto.getQuantidadeRal());
+       jTxtDescricao.setText( produto.getDescricaoRal());
+       jTxtTamanho.setText( produto.getTamanhoRal());
+       jTxtPreco.setText( produto.getPrecoRal());
        
        //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //data   
      //  jFmtDataNascimento.setText( formato.format(usuarios.getDataNascimento()));
@@ -143,7 +159,7 @@ public class JDlgProduto extends javax.swing.JDialog {
         jBtnCancelar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jTxtPreco = new javax.swing.JFormattedTextField();
-        jTxtGenero = new javax.swing.JFormattedTextField();
+        jTxtTamanho = new javax.swing.JFormattedTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTxtCodigoProduto = new javax.swing.JTextField();
@@ -212,13 +228,13 @@ public class JDlgProduto extends javax.swing.JDialog {
             }
         });
 
-        jTxtGenero.addActionListener(new java.awt.event.ActionListener() {
+        jTxtTamanho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtGeneroActionPerformed(evt);
+                jTxtTamanhoActionPerformed(evt);
             }
         });
 
-        jLabel14.setText("Gênero");
+        jLabel14.setText("tamanho");
 
         jLabel1.setText("Código do Produto");
 
@@ -262,7 +278,7 @@ public class JDlgProduto extends javax.swing.JDialog {
                                 .addComponent(jTxtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTxtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTxtTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel11))
                                     .addGap(151, 151, 151)
@@ -301,7 +317,7 @@ public class JDlgProduto extends javax.swing.JDialog {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTxtDescricao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -328,7 +344,7 @@ public class JDlgProduto extends javax.swing.JDialog {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        habilitar();
+        habilitar(true);
         incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
@@ -338,7 +354,7 @@ public class JDlgProduto extends javax.swing.JDialog {
                 "Pergunta", JOptionPane.YES_NO_OPTION );
                 
         if( resp == JOptionPane.YES_OPTION){
-            Produto produto = viewBean();
+            ProdutoRal produto = viewBean();
             ProdutoDAO ProdutoDAO = new ProdutoDAO();
             ProdutoDAO.delete(produto);
             JOptionPane.showMessageDialog(null, "Exclusão efetuada");
@@ -352,7 +368,7 @@ public class JDlgProduto extends javax.swing.JDialog {
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
         
-           Produto produto = viewBean();       
+           ProdutoRal produto = viewBean();       
      ProdutoDAO produtoDAO = new ProdutoDAO();
      
     if (incluindo == true){
@@ -362,7 +378,7 @@ public class JDlgProduto extends javax.swing.JDialog {
       
         produtoDAO.update(produto);
     }
-     desabilitar();
+        habilitar(false);
      
      
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
@@ -374,28 +390,28 @@ public class JDlgProduto extends javax.swing.JDialog {
 //        int id = Integer.valueOf(resp);
 //        Produto produto =(Produto) produtoDAO.list( id );
 //        beanView(produto);
-      JDlgProdutoPesquisar jDlgProdutoPesquisar = new JDlgProdutoPesquisar(null, true);
-      jDlgProdutoPesquisar.setVisible(true);
+//      JDlgProdutoPesquisar jDlgProdutoPesquisar = new JDlgProdutoPesquisar(null, true);
+//      jDlgProdutoPesquisar.setVisible(true);
 
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        desabilitar();
-        limparCampo();
+        habilitar(false);
+        limpar();
         JOptionPane.showMessageDialog(null, "Operação Cancelada");
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        habilitar();
-        limparCampo();
+        habilitar(true);
+        limpar();
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
-    private void jTxtGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtGeneroActionPerformed
+    private void jTxtTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTamanhoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtGeneroActionPerformed
+    }//GEN-LAST:event_jTxtTamanhoActionPerformed
 
     private void jTxtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtPrecoActionPerformed
         // TODO add your handling code here:
@@ -474,9 +490,9 @@ public class JDlgProduto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTxtCodigoProduto;
     private javax.swing.JTextField jTxtDescricao;
-    private javax.swing.JFormattedTextField jTxtGenero;
     private javax.swing.JTextField jTxtNome;
     private javax.swing.JFormattedTextField jTxtPreco;
     private javax.swing.JTextField jTxtQuantidade;
+    private javax.swing.JFormattedTextField jTxtTamanho;
     // End of variables declaration//GEN-END:variables
 }

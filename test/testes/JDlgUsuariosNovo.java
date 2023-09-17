@@ -3,27 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package testes;
 
-import view.controle.UsuariosControle;
+//import view.controle.UsuariosControle;
 
 /**
  *
  * @author u07329163139
  */
 public class JDlgUsuariosNovo extends javax.swing.JDialog {
-
+  JDlgUsuariosNovoIA jDlgUsuariosNovoIA;
     /**
      * Creates new form JDlgUsuariosNovo
      */
-    JDlgUsuariosNovoIA jDlgUsuariosNovoIA;
-    
-    
     public JDlgUsuariosNovo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
           setLocationRelativeTo(null);
           setTitle("Cadastro de Usuario");
+          jDlgUsuariosNovoIA = new JDlgUsuariosNovoIA(null, modal);
 //          UsuariosControle usuariosControle = new UsuariosControle();
 //          jTable1.setModel(usuariosControle);
     }
@@ -89,15 +87,16 @@ public class JDlgUsuariosNovo extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

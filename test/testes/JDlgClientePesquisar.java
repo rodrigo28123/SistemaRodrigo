@@ -3,36 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package testes;
 
-import bean.Produto;
-import dao.ProdutoDAO;
+import bean.ClienteRal;
+import dao.ClienteDAO;
 import java.util.List;
-import view.controle.ProdutoControle;
+import view.controle.FornecedorControle;
 
 /**
  *
  * @author u07329163139
  */
-public class JDlgProdutoPesquisar extends javax.swing.JDialog {
+public class JDlgClientePesquisar extends javax.swing.JDialog {
 
     /**
-     * Creates new form JDlgProdutoPesquisar
+     * Creates new form JDlgClientePesquisar
      */
-    private JDlgProduto JDlgProduto;
-    ProdutoControle produtoControle;
+    private JDlgCliente JDlgCliente;
+    FornecedorControle clienteControle;
     
-    
-    public JDlgProdutoPesquisar(java.awt.Frame parent, boolean modal) {
+    public JDlgClientePesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        produtoControle = new ProdutoControle();
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-        List lista = produtoDAO.listAll();
-        produtoControle.setList(lista);
+        clienteControle = new FornecedorControle();
+        ClienteDAO clienteDAO = new ClienteDAO();
+        List lista = clienteDAO.listAll();
+        clienteControle.setList(lista);
         
-        jTable1.setModel(produtoControle);
+        jTable1.setModel(clienteControle);
     }
 
     /**
@@ -64,7 +63,7 @@ public class JDlgProdutoPesquisar extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jBtnOkay.setText("Ok");
+        jBtnOkay.setText("Okay");
         jBtnOkay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnOkayActionPerformed(evt);
@@ -82,31 +81,23 @@ public class JDlgProdutoPesquisar extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(242, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBtnOkay)
-                .addGap(5, 5, 5)
-                .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBtnCancelar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(251, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnOkay)
                     .addComponent(jBtnCancelar))
-                .addGap(26, 26, 26))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(69, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -114,15 +105,20 @@ public class JDlgProdutoPesquisar extends javax.swing.JDialog {
 
     private void jBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkayActionPerformed
         // TODO add your handling code here:
-        int rowSel = jTable1.getSelectedRow();
-        Produto produto = produtoControle.getBean(rowSel);
-        JDlgProduto.beanView(produto);
+//          int rowSel = jTable1.getSelectedRow();
+//        Cliente cliente= clienteControle.getBean(rowSel);
+//        JDlgCliente.beanView(cliente);
+//        setVisible(false);
+ int rowSel = jTable1.getSelectedRow();
+        JDlgCliente.cliente = clienteControle.getBean(rowSel);
+        JDlgCliente.beanView(JDlgCliente.cliente);
+        
         setVisible(false);
     }//GEN-LAST:event_jBtnOkayActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+         setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
@@ -142,20 +138,20 @@ public class JDlgProdutoPesquisar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgProdutoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgProdutoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgProdutoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgProdutoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgProdutoPesquisar dialog = new JDlgProdutoPesquisar(new javax.swing.JFrame(), true);
+                JDlgClientePesquisar dialog = new JDlgClientePesquisar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

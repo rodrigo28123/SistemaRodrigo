@@ -9,7 +9,8 @@ package view;
 import javax.swing.JOptionPane;
 import view.JFrmPrincipal;
 import java.text.ParseException;
-
+import bean.UsuariosRal;
+import dao.UsuariosDAO;
 /**
  *
  * @author PC
@@ -27,7 +28,32 @@ public class JDlgLogin extends javax.swing.JDialog {
         
 
     }
-
+//    public void entrar(){
+//       
+//        
+//        if(jTxtUsuario.getText().equals("ledesma") && jPwfSenha.getText().equals("senha123")){
+//            this.dispose();
+//        JFrmPrincipal  jFrmPrincipal = new JFrmPrincipal();
+//        jFrmPrincipal.setVisible(true);
+////        } else if(jTxtUsuario.getText().equalsIgnoreCase("ledesma") && jPwfSenha.getText().equalsIgnoreCase("senha123")){
+////        JFrmPrincipal  jFrmPrincipal = new JFrmPrincipal();
+////        jFrmPrincipal.setVisible(true);
+//
+//        } else {
+//            JOptionPane.showMessageDialog(this,"esta errado","ATENÇÂO", JOptionPane.ERROR_MESSAGE);
+//        }
+        
+//    }
+//public UsuariosRal viewBean() {
+//        String username = jTxtUsuario.getText();
+//        String password = new String(jPwfSenha.getPassword());
+//
+//        UsuariosRal usuarios = new UsuariosRal();
+//        usuarios.setNomeRal(username);
+//        usuarios.setSenhaRal(password);
+//
+//        return usuarios;
+//    }
    
 
     /**
@@ -71,14 +97,17 @@ public class JDlgLogin extends javax.swing.JDialog {
             }
         });
 
-        jTxtUsuario.setText("ledesma ou livros");
         jTxtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtUsuarioActionPerformed(evt);
             }
         });
 
-        jPwfSenha.setText("senha123");
+        jPwfSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPwfSenhaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,18 +165,35 @@ public class JDlgLogin extends javax.swing.JDialog {
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
 
          /// SENHA E USUARIO PARA O ACESSO
-        if (jPwfSenha.getText().equals("senha123") && !jTxtUsuario.getText().equals("ledesma") || (jPwfSenha.getText().equals("senha123") && !jTxtUsuario.getText().equals("livros"))  ) { 
+//        if (jPwfSenha.getText().equals("senha123") && !jTxtUsuario.getText().equals("ledesma") || (jPwfSenha.getText().equals("senha123") && !jTxtUsuario.getText().equals("livros"))  ) { 
+//         this.dispose();//mesma coisa do setvisible
+//            //JOptionPane.showMessageDialog(null, "Dados corretos");
+//             }  else {
+//                JOptionPane.showMessageDialog(null, "Dados incorretos");
+//        }
+    
+//entrar();
+
+
+         /// SENHA E USUARIO PARA O ACESSO
+        if (jPwfSenha.getText().equals("senha123") && jTxtUsuario.getText().equals("ledesma")   ) { 
          this.dispose();//mesma coisa do setvisible
+            JOptionPane.showMessageDialog(this,"Acessso autorizado","ACESSADO", JOptionPane.INFORMATION_MESSAGE);
             //JOptionPane.showMessageDialog(null, "Dados corretos");
              }  else {
-                JOptionPane.showMessageDialog(null, "Dados incorretos");
-        }
+                JOptionPane.showMessageDialog(this,"senha ou usuario está errado","ATENÇÂO", JOptionPane.ERROR_MESSAGE);
+}
+
 
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jTxtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtUsuarioActionPerformed
+
+    private void jPwfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPwfSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPwfSenhaActionPerformed
 
     /**
      * @param args the command line arguments

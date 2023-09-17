@@ -31,7 +31,7 @@
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jTxtValorTotal" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
                           <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTxtEnderecoEntrega" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
+                          <Component id="jTxtDataCompra" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jBtnIncluir" min="-2" max="-2" attributes="0"/>
@@ -54,10 +54,10 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFmtDataVenda" alignment="0" pref="215" max="32767" attributes="0"/>
-                          <Component id="jTxtProduto" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTxtFuncionario" alignment="0" pref="215" max="32767" attributes="0"/>
+                          <Component id="jTxtFornecedor" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTxtCodigoCompra" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -76,15 +76,15 @@
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+              <Component id="jTxtCodigoCompra" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTxtProduto" min="-2" max="-2" attributes="0"/>
+              <Component id="jTxtFornecedor" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jFmtDataVenda" min="-2" max="-2" attributes="0"/>
+              <Component id="jTxtFuncionario" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -92,7 +92,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTxtEnderecoEntrega" min="-2" max="-2" attributes="0"/>
+              <Component id="jTxtDataCompra" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBtnIncluir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -117,12 +117,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Data da Compra"/>
+        <Property name="text" type="java.lang.String" value="funcionario"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jFmtDataVenda">
+    <Component class="javax.swing.JFormattedTextField" name="jTxtFuncionario">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFmtDataVendaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtFuncionarioActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnIncluir">
@@ -191,19 +191,25 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnCancelarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTxtProduto">
+    <Component class="javax.swing.JTextField" name="jTxtFornecedor">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtFornecedorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Produto"/>
+        <Property name="text" type="java.lang.String" value="fornecedor"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Endere&#xe7;o de entrega"/>
+        <Property name="text" type="java.lang.String" value="data da compra"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTxtEnderecoEntrega">
+    <Component class="javax.swing.JTextField" name="jTxtDataCompra">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtDataCompraActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtValorTotal">
     </Component>
@@ -212,7 +218,7 @@
         <Property name="text" type="java.lang.String" value="C&#xf3;digo de Compra"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="jTxtCodigoCompra">
     </Component>
   </SubComponents>
 </Form>
