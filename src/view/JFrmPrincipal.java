@@ -6,7 +6,7 @@
 package view;
 
 
-
+import view.JDlgLogin;
 /**
  *
  * @author u07329163139
@@ -23,6 +23,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
          JDlgLogin jDlgLogin = new JDlgLogin(this, true);
        jDlgLogin.setVisible(true);
+       
         
      
     }
@@ -46,7 +47,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMnuFuncionario = new javax.swing.JMenuItem();
         jMnuFornecedor = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMnuCadastroFuncionario = new javax.swing.JMenuItem();
         jMnuCadastroProduto = new javax.swing.JMenuItem();
         jMnuSair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -106,14 +107,15 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMnuFornecedor);
         jMenu1.add(jSeparator1);
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pessoas-carregam-caixa.png"))); // NOI18N
-        jMenuItem1.setText("Cadastro de Funcionario");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMnuCadastroFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        jMnuCadastroFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pessoas-carregam-caixa.png"))); // NOI18N
+        jMnuCadastroFuncionario.setText("Cadastro de Funcionario");
+        jMnuCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMnuCadastroFuncionarioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMnuCadastroFuncionario);
 
         jMnuCadastroProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_MASK));
         jMnuCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/livro-alcorao.png"))); // NOI18N
@@ -212,11 +214,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         JDlgProdutoNovo.setVisible(true);
     }//GEN-LAST:event_jMnuCadastroProdutoActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMnuCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuCadastroFuncionarioActionPerformed
         // TODO add your handling code here:
          JDlgFuncionarioNovo JDlgFuncionarioNovo = new JDlgFuncionarioNovo (this, true);
         JDlgFuncionarioNovo.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMnuCadastroFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,7 +263,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMnuCadastroFuncionario;
     private javax.swing.JMenuItem jMnuCadastroProduto;
     private javax.swing.JMenuItem jMnuCompras;
     private javax.swing.JMenuItem jMnuFornecedor;
