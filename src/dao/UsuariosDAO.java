@@ -27,7 +27,11 @@ import org.hibernate.criterion.Restrictions;
  */
 
 public class UsuariosDAO extends DAO_Abstract {
+    
+   
+    
     public UsuariosDAO() {
+       
     
     }
 
@@ -35,7 +39,6 @@ public class UsuariosDAO extends DAO_Abstract {
     @Override
     public void insert(Object object) {
     session.beginTransaction();
-    session.update(object);
     session.save(object);
     session.getTransaction().commit();
     }
@@ -51,7 +54,7 @@ public class UsuariosDAO extends DAO_Abstract {
 
     @Override
     public void delete(Object object) {
- session.beginTransaction();
+    session.beginTransaction();
     session.flush();
     session.clear();
     session.delete(object);
@@ -75,9 +78,37 @@ public class UsuariosDAO extends DAO_Abstract {
     Criteria criteria = session.createCriteria(UsuariosRal.class);
     List lista =criteria.list();
     session.getTransaction().commit();
-    return lista;
+    return (ArrayList) lista;
    
     }
+    
+    public List listNome(String nome){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(UsuariosRal.class);
+   criteria.add(Restrictions.eq("nomeRal", "%" + nome + "%"));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
+    }
+    
+     public List Busca(String nome){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(UsuariosRal.class);
+   criteria.add(Restrictions.eq("nomeRal", "%" + nome + "%"));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
+
+    }
+    
+     public List buscar(String cmp, String valor){
+         session.beginTransaction();
+    Criteria criteria = session.createCriteria(UsuariosRal.class);
+   criteria.add(Restrictions.eq(cmp, valor));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
+     }
 }
 
 

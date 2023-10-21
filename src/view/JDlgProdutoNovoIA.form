@@ -31,15 +31,13 @@
                   <Component id="jTxtNome" min="-2" pref="607" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTxtGenero" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jTxtPreco" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                          <Component id="jTxtTamanho" min="-2" pref="165" max="-2" attributes="0"/>
+                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTxtQuantidade" min="-2" pref="178" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <Component id="jTxtDescricao" min="-2" pref="291" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -63,24 +61,18 @@
               <Component id="jTxtNome" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTxtGenero" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTxtDescricao" alignment="3" max="32767" attributes="0"/>
+                  <Component id="jTxtTamanho" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTxtPreco" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTxtQuantidade" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jTxtPreco" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="39" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -110,17 +102,7 @@
         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jTxtGenero">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtGeneroActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JTextField" name="jTxtDescricao">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel14">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="G&#xea;nero"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -130,16 +112,6 @@
     <Component class="javax.swing.JTextField" name="jTxtCodigoProduto">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtCodigoProdutoActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="quantidade"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTxtQuantidade">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtQuantidadeActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -179,5 +151,15 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JFormattedTextField" name="jTxtTamanho">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtTamanhoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel15">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="tamanho"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

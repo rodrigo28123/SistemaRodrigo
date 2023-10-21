@@ -5,39 +5,36 @@
  */
 package view;
 
-import bean.FuncionarioRal;
-import dao.FuncionarioDAO;
+import testes.JDlgUsuariosNovoIA;
+import bean.Usuarios;
+import dao.UsuariosDAO;
 import java.util.List;
-import javax.swing.JOptionPane;
 import tools.Util;
-import view.controle.FuncionarioControle;
-import view.controle.ProdutoControle;
 
 /**
  *
- * @author PC
+ * @author Marcos
  */
-public class JDlgFuncionarioNovo extends javax.swing.JDialog {
-    
-    FuncionarioDAO funcionarioDAO;
-    FuncionarioRal funcionario;
-    FuncionarioControle funcionarioControle;
-    private JDlgFuncionarioNovoIA jDlgfuncionarioNovoIA;
-    /**
-     * Creates new form JDlgFuncionarioNovo
-     */
-    public JDlgFuncionarioNovo(java.awt.Frame parent, boolean modal) {
+public class JDlgUsuariosNovo extends javax.swing.JDialog {
+
+    UsuariosDAO usuariosDAO;
+    Usuarios usuarios;
+    UsuariosController usuariosController;
+    private JDlgUsuariosNovoIA jDlgUsuariosNovoIA;
+
+    public JDlgUsuariosNovo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         setLocationRelativeTo(null);
-         setTitle("Cadastro de Funcionario");
-         
-        jDlgfuncionarioNovoIA = new JDlgFuncionarioNovoIA(null, true);
-        funcionarioControle = new FuncionarioControle();
-        funcionarioDAO = new FuncionarioDAO();
-        List lista = funcionarioDAO.listAll();
-        funcionarioControle.setList(lista);
-        jTable1.setModel(funcionarioControle);
+        setTitle("Cadastro de usuários");
+        setLocationRelativeTo(null);
+
+        jDlgUsuariosNovoIA = new JDlgUsuariosNovoIA(null, true);
+        usuariosController = new UsuariosController();
+        usuariosDAO = new UsuariosDAO();
+        List lista = usuariosDAO.listAll();
+        usuariosController.setList(lista);
+        jTable1.setModel(usuariosController);
+
     }
 
     /**
@@ -73,7 +70,6 @@ public class JDlgFuncionarioNovo extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir.png"))); // NOI18N
         jBtnIncluir.setText("Incluir");
         jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +78,6 @@ public class JDlgFuncionarioNovo extends javax.swing.JDialog {
         });
         jPanel1.add(jBtnIncluir);
 
-        jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
         jBtnAlterar.setText("Alterar");
         jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +86,6 @@ public class JDlgFuncionarioNovo extends javax.swing.JDialog {
         });
         jPanel1.add(jBtnAlterar);
 
-        jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
         jBtnExcluir.setText("Excluir");
         jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,71 +98,41 @@ public class JDlgFuncionarioNovo extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        // TODO add your handling code here:
-
-        jDlgfuncionarioNovoIA.setTitle("Inclusão");
-        jDlgfuncionarioNovoIA.setVisible(true);
-         jDlgfuncionarioNovoIA = new JDlgFuncionarioNovoIA(null, true);
-        funcionarioControle = new FuncionarioControle();
-        funcionarioDAO = new FuncionarioDAO();
-        List lista = funcionarioDAO.listAll();
-        funcionarioControle.setList(lista);
-        jTable1.setModel(funcionarioControle);
+        // TODO add your handling code here:        
+        jDlgUsuariosNovoIA.setTitle("Inclusão");
+        jDlgUsuariosNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-
-        jDlgfuncionarioNovoIA.setTitle("alteração");
-       
-         int rowSel = jTable1.getSelectedRow();
-       FuncionarioRal funcionario = funcionarioControle.getBean(rowSel);
-        jDlgfuncionarioNovoIA.beanView(funcionario);
-       List lista = funcionarioDAO.listAll();
-       funcionarioControle.setList(lista);
-        jDlgfuncionarioNovoIA.setVisible(true);
-      
-        
-//         int rowSel = jTable1.getSelectedRow();
-//        FuncionarioRal funcionario = funcionarioControle.getBean(rowSel);
-//        JDlgFuncionarioNovoIA.beanView(funcionario);
-//        setVisible(false);
+        jDlgUsuariosNovoIA.setTitle("Alteração");
+        jDlgUsuariosNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-//            if(Util.perguntar("Deseja Excluir o Usuario?") == true){}
-// int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
-//                "Pergunta", JOptionPane.YES_NO_OPTION );
-//                
-//        if( resp == JOptionPane.YES_OPTION){
-//          
-//            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
-//        }else {
-//          Util.mensagem("Exclusão não efetuada");
-//        }
- if (Util.perguntar("Deseja excluir o registro?") == true) {
+        if (Util.perguntar("Deseja excluir o registro?") == true) {
             int sel = jTable1.getSelectedRow();
-            funcionario = funcionarioControle.getBean(sel);
-            funcionarioDAO.delete(funcionario);
+            usuarios = usuariosController.getBean(sel);
+            usuariosDAO.delete(usuarios);
             //atualizar a lista no jtable
-            List lista = funcionarioDAO.listAll();
-            funcionarioControle.setList(lista);
+            List lista = usuariosDAO.listAll();
+            usuariosController.setList(lista);
         } else {
             Util.mensagem("Exclusão cancelada.");
         }
@@ -191,20 +155,23 @@ public class JDlgFuncionarioNovo extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgFuncionarioNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuariosNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgFuncionarioNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuariosNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgFuncionarioNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuariosNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgFuncionarioNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuariosNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgFuncionarioNovo dialog = new JDlgFuncionarioNovo(new javax.swing.JFrame(), true);
+                JDlgUsuariosNovo dialog = new JDlgUsuariosNovo(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

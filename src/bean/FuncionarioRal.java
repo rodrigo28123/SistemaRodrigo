@@ -1,5 +1,5 @@
 package bean;
-// Generated 14/09/2023 10:03:34 by Hibernate Tools 4.3.1
+// Generated 19/10/2023 12:07:28 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -26,7 +26,7 @@ public class FuncionarioRal  implements java.io.Serializable {
      private String cpfRal;
      private String emailRal;
      private String rgRal;
-     private Set compraRals = new HashSet(0);
+     
 
     public FuncionarioRal() {
     }
@@ -39,7 +39,14 @@ public class FuncionarioRal  implements java.io.Serializable {
         this.emailRal = emailRal;
         this.rgRal = rgRal;
     }
-    
+    public FuncionarioRal(int idfuncionarioRal, String nomeRal, String cpfRal, String emailRal, String rgRal, Set compraRals) {
+       this.idfuncionarioRal = idfuncionarioRal;
+       this.nomeRal = nomeRal;
+       this.cpfRal = cpfRal;
+       this.emailRal = emailRal;
+       this.rgRal = rgRal;
+       
+    }
    
      @Id 
 
@@ -93,14 +100,7 @@ public class FuncionarioRal  implements java.io.Serializable {
         this.rgRal = rgRal;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="funcionarioRal")
-    public Set getCompraRals() {
-        return this.compraRals;
-    }
-    
-    public void setCompraRals(Set compraRals) {
-        this.compraRals = compraRals;
-    }
+
 
 
 

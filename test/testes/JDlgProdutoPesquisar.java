@@ -10,6 +10,7 @@ import bean.ProdutoRal;
 import dao.ProdutoDAO;
 import java.util.List;
 import view.JDlgProduto;
+import view.JDlgProduto;
 import view.controle.ProdutoControle;
 
 /**

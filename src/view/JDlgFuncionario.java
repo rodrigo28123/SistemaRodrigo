@@ -23,7 +23,7 @@ import tools.Util;
  */
 public class JDlgFuncionario extends javax.swing.JDialog {
 Boolean incluindo;
-MaskFormatter mascaraCpf;
+MaskFormatter mascaraCpf, mascaraRg;
     /**
      * Creates new form JDlgFuncionario
      */
@@ -32,15 +32,21 @@ MaskFormatter mascaraCpf;
         initComponents();
           setTitle("Funcionario");
           setLocationRelativeTo(null);
-          habilitar(false);
+          
+          
+          
+          Util.habilitar(false,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
           
            try {
              mascaraCpf = new MaskFormatter("###.###.###-##");
+             mascaraRg = new MaskFormatter("#.###.###");
+             
          } catch (ParseException ex) {
              Logger.getLogger(JDlgFuncionario.class.getName()).log(Level.SEVERE, null, ex);
          }
           jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
-         
+          jFmtRg.setFormatterFactory(new DefaultFormatterFactory(mascaraRg));
         
     }
     
@@ -221,6 +227,8 @@ public void limpar(){
 
         jLabel1.setText("Código de Funcionário");
 
+        jFmtCpf.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -235,13 +243,17 @@ public void limpar(){
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(jTxtCodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel9)
+                        .addGap(142, 142, 142)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jFmtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBtnIncluir)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -252,23 +264,20 @@ public void limpar(){
                                 .addComponent(jBtnConfirmar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBtnCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jBtnPesquisar))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTxtCodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                                .addComponent(jBtnPesquisar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFmtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)))
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -283,9 +292,9 @@ public void limpar(){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel12))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jFmtRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -344,29 +353,37 @@ public void limpar(){
         funcionarioDAO.update(funcionario);
     }
    
-     habilitar(false);
+    Util.habilitar(false,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
-        String resp = JOptionPane.showInputDialog(null, "Entre com a chave primária");
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        int id = Integer.valueOf(resp);
-       FuncionarioRal funcionario =(FuncionarioRal) funcionarioDAO.list( id );
-        beanView(funcionario);
+//        String resp = JOptionPane.showInputDialog(null, "Entre com a chave primária");
+//        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+//        int id = Integer.valueOf(resp);
+//       FuncionarioRal funcionario =(FuncionarioRal) funcionarioDAO.list( id );
+//        beanView(funcionario);
+ JDlgFuncionarioNovo JDlgFuncionarioNovo = new JDlgFuncionarioNovo (null, true);
+        JDlgFuncionarioNovo.setVisible(true);
+
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-      habilitar(false);
-        limpar();
+     Util.habilitar(false,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limparCampo(jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg,
+                jTxtEmail);
         JOptionPane.showMessageDialog(null, "Operação Cancelada");
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-     habilitar(true);
-        limpar();
+    Util.habilitar(true,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limparCampo(jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg,
+                jTxtEmail);
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 

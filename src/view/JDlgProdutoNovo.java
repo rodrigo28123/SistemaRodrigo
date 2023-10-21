@@ -5,15 +5,23 @@
  */
 package view;
 
+import bean.ProdutoRal;
+import dao.ProdutoDAO;
+import java.util.List;
 import javax.swing.JOptionPane;
 import tools.Util;
+import view.controle.ProdutoControle;
 
 /**
  *
  * @author PC
  */
 public class JDlgProdutoNovo extends javax.swing.JDialog {
- JDlgProdutoNovoIA JDlgProdutoNovoIA;
+ 
+    ProdutoDAO produtoDAO;
+    ProdutoRal produto;
+    ProdutoControle produtoControle;
+    private JDlgProdutoNovoIA jDlgProdutoNovoIA;
     /**
      * Creates new form JDlgProdutoNovo
      */
@@ -22,7 +30,14 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Cadastro de Produto");
-        JDlgProdutoNovoIA = new JDlgProdutoNovoIA(null, modal);
+        
+        
+        jDlgProdutoNovoIA = new JDlgProdutoNovoIA(null, true);
+        produtoControle = new ProdutoControle();
+        produtoDAO = new ProdutoDAO();
+        List lista = produtoDAO.listAll();
+        produtoControle.setList(lista);
+        jTable1.setModel(produtoControle);
     }
 
     /**
@@ -105,28 +120,55 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-
-        JDlgProdutoNovoIA.setTitle("Inclusão");
-        JDlgProdutoNovoIA.setVisible(true);
+jDlgProdutoNovoIA.incluindo = true;
+         jDlgProdutoNovoIA.setTitle("Inclusão");
+        jDlgProdutoNovoIA.setVisible(true);
+         jDlgProdutoNovoIA = new JDlgProdutoNovoIA(null, true);
+        produtoControle = new ProdutoControle();
+        produtoDAO = new ProdutoDAO();
+        List lista = produtoDAO.listAll();
+        produtoControle.setList(lista);
+        jTable1.setModel(produtoControle);
+        
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-
-        JDlgProdutoNovoIA.setTitle("alteração");
-        JDlgProdutoNovoIA.setVisible(true);
+//        jDlgProdutoNovoIA.incluindo = false;
+  jDlgProdutoNovoIA.setTitle("alteração");
+       int rowSel = jTable1.getSelectedRow();
+        ProdutoRal produto = produtoControle.getBean(rowSel);
+        jDlgProdutoNovoIA.beanView(produto);
+        
+       List lista = produtoDAO.listAll();
+       produtoControle.setList(lista);
+       
+        jDlgProdutoNovoIA.setVisible(true);
+      
+                
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
-                "Pergunta", JOptionPane.YES_NO_OPTION );
-                
-        if( resp == JOptionPane.YES_OPTION){
-          
-            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
-        }else {
-          Util.mensagem("Exclusão não efetuada");
+//        int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
+//                "Pergunta", JOptionPane.YES_NO_OPTION );
+//                
+//        if( resp == JOptionPane.YES_OPTION){
+//          
+//            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
+//        }else {
+//          Util.mensagem("Exclusão não efetuada");
+//        }
+
+if (Util.perguntar("Deseja excluir o registro?") == true) {
+            int sel = jTable1.getSelectedRow();
+            produto = produtoControle.getBean(sel);
+            produtoDAO.delete(produto);
+            //atualizar a lista no jtable
+            List lista = produtoDAO.listAll();
+            produtoControle.setList(lista);
+        } else {
+            Util.mensagem("Exclusão cancelada.");
         }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 

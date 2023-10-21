@@ -1,5 +1,5 @@
 package bean;
-// Generated 14/09/2023 10:03:34 by Hibernate Tools 4.3.1
+// Generated 19/10/2023 12:07:28 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -39,7 +39,7 @@ public class FornecedorRal  implements java.io.Serializable {
      private String nomeContaBancRal;
      private String numAgenciaBancRal;
      private String numContaBancRal;
-     
+   
 
     public FornecedorRal() {
     }
@@ -62,7 +62,25 @@ public class FornecedorRal  implements java.io.Serializable {
         this.numAgenciaBancRal = numAgenciaBancRal;
         this.numContaBancRal = numContaBancRal;
     }
-  
+    public FornecedorRal(int idfornecedorRal, String nomeRal, String apelidoRal, String enderecoRal, String cepRal, String cidadeRal, String complementoRal, String telefoneRal, String emailRal, String cpfRal, String rgRal, Date dataNascimentoRal, String nomeContaBancRal, String numAgenciaBancRal, String numContaBancRal, Set compraRals) {
+       this.idfornecedorRal = idfornecedorRal;
+       this.nomeRal = nomeRal;
+       this.apelidoRal = apelidoRal;
+       this.enderecoRal = enderecoRal;
+       this.cepRal = cepRal;
+       this.cidadeRal = cidadeRal;
+       this.complementoRal = complementoRal;
+       this.telefoneRal = telefoneRal;
+       this.emailRal = emailRal;
+       this.cpfRal = cpfRal;
+       this.rgRal = rgRal;
+       this.dataNascimentoRal = dataNascimentoRal;
+       this.nomeContaBancRal = nomeContaBancRal;
+       this.numAgenciaBancRal = numAgenciaBancRal;
+       this.numContaBancRal = numContaBancRal;
+       
+    }
+   
      @Id 
 
     
@@ -214,9 +232,6 @@ public class FornecedorRal  implements java.io.Serializable {
     public void setNumContaBancRal(String numContaBancRal) {
         this.numContaBancRal = numContaBancRal;
     }
-
-
-
 
 
 

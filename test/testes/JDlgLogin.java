@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package testes;
 
 
 import javax.swing.JOptionPane;
@@ -184,7 +184,7 @@ public class JDlgLogin extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this,"senha ou usuario está errado","ATENÇÂO", JOptionPane.ERROR_MESSAGE);
 }
 
-
+            
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jTxtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtUsuarioActionPerformed

@@ -27,15 +27,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jFmtNumAgenciaBanc" min="-2" pref="165" max="-2" attributes="0"/>
                           <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFmtNumAgenciaBanc" min="-2" pref="134" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jFmtNumContaBanc" min="-2" pref="136" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel1" max="32767" attributes="0"/>
+                          <Component id="jFmtNumContaBanc" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jFmtNomeContaBanc" min="-2" pref="165" max="-2" attributes="0"/>
                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
@@ -48,33 +48,23 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jTxtCidade" min="-2" pref="165" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTxtCep" min="-2" pref="116" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTxtComplemento" min="-2" pref="117" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFmtCep" min="-2" pref="103" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTxtComplemento" min="-2" pref="117" max="-2" attributes="0"/>
+                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -112,10 +102,10 @@
                           <Component id="jTxtApelido" min="-2" pref="166" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jTxtCodigoFornecedor" alignment="0" min="-2" pref="337" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTxtCodigoFornecedor" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
+              <EmptySpace pref="71" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
@@ -186,8 +176,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTxtEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTxtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTxtCep" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTxtComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jFmtCep" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -197,9 +187,9 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jFmtNomeContaBanc" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jFmtNumAgenciaBanc" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jFmtNumContaBanc" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jFmtNomeContaBanc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
           </Group>
@@ -231,11 +221,6 @@
         <Property name="text" type="java.lang.String" value="Cidade"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jFmtNumAgenciaBanc">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFmtNumAgenciaBancActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JTextField" name="jTxtCidade">
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtEndereco">
@@ -249,8 +234,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Numero da Conta Bancaria"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jFmtNumContaBanc">
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtCodigoFornecedor">
       <Events>
@@ -267,8 +250,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnAlterarActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTxtCep">
     </Component>
     <Component class="javax.swing.JButton" name="jBtnExcluir">
       <Properties>
@@ -406,6 +387,15 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Codigo de Fornecedor"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFmtCep">
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFmtNumAgenciaBanc">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFmtNumAgenciaBancActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFmtNumContaBanc">
     </Component>
   </SubComponents>
 </Form>

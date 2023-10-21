@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,8 +33,8 @@ public class CompraDAO extends DAO_Abstract {
     @Override
     public void insert(Object object) {
         session.beginTransaction();
-        session.update(object);
-        session.save(object);
+        //session.update(object);
+       session.save(object);
         session.getTransaction().commit();
     }
 
@@ -72,7 +73,7 @@ public class CompraDAO extends DAO_Abstract {
         Criteria criteria = session.createCriteria(CompraRal.class);
         List lista = criteria.list();
         session.getTransaction().commit();
-        return lista;
+        return (ArrayList) lista;
 
     }
 }

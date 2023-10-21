@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.controle;
+package view;
 
-import bean.ProdutoRal;
+import bean.Usuarios;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author PC
- */
-public class ProdutoControle extends AbstractTableModel {
+ * @author Marcos
+     */
+public class UsuariosController extends AbstractTableModel {
 
     private List lista;
 
@@ -22,8 +22,8 @@ public class ProdutoControle extends AbstractTableModel {
         this.fireTableDataChanged();
     }
    
-    public ProdutoRal getBean(int row) {
-        return (ProdutoRal) lista.get(row);
+    public Usuarios getBean(int row) {
+        return (Usuarios) lista.get(row);
     }
     
     @Override
@@ -38,18 +38,18 @@ public class ProdutoControle extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int column) {
-        ProdutoRal produto = (ProdutoRal) lista.get(row);
+        Usuarios usuarios = (Usuarios) lista.get(row);
         if (column == 0) {
-           return produto.getIdprodutoRal();
+           return usuarios.getIdusuarios();
         } 
         if (column == 1) {
-           return produto.getNomeRal();
+           return usuarios.getNome();
         } 
         if (column == 2) {
-           return produto.getTamanhoRal();
+           return usuarios.getApelido();
         } 
         if (column == 3) {
-           return produto.getPrecoRal();
+           return usuarios.getCpf();
         } 
         return null;
     }
@@ -63,10 +63,10 @@ public class ProdutoControle extends AbstractTableModel {
             return "Nome";
         }
         if (column == 2) {
-            return "Tamanho";
+            return "Apelido";
         }
         if (column == 3) {
-            return "Preço";
+            return "Cpf";
         }
         return "";
     }
