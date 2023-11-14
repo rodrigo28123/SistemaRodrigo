@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,7 +35,7 @@ public class FuncionarioDAO extends DAO_Abstract {
     @Override
     public void insert(Object object) {
         session.beginTransaction();
-        session.update(object);
+        //session.update(object);
         session.save(object);
         session.getTransaction().commit();
     }
@@ -74,8 +75,37 @@ public class FuncionarioDAO extends DAO_Abstract {
         Criteria criteria = session.createCriteria(FuncionarioRal.class);
         List lista = criteria.list();
         session.getTransaction().commit();
-        return lista;
+        return (ArrayList) lista;
 
+    }
+    
+    
+     public List listEmail(String email){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(FuncionarioRal.class);
+   criteria.add(Restrictions.like("emailRal", "%" + email + "%"));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
+    }
+    
+    public List listSalario(double salario){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(FuncionarioRal.class);
+   criteria.add(Restrictions.le("salarioRal", salario));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
+    }
+      
+    public List listEmailSalario(String email, double salario){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(FuncionarioRal.class);
+   criteria.add(Restrictions.like("emailRal", "%" + email + "%"));
+      criteria.add(Restrictions.le("salarioRal", salario));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
     }
 }
 

@@ -8,7 +8,9 @@ package view;
 //import testes.JDlgClientePesquisar;
 //import testes.JDlgCliente;
 import bean.FornecedorRal;
+import bean.UsuariosRal;
 import dao.FornecedorDAO;
+import dao.UsuariosDAO;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,19 +24,33 @@ import tools.Util;
  */
 public class JDlgFornecedor extends javax.swing.JDialog {
 Boolean incluindo;
-MaskFormatter mascaraCpf, mascaraData, mascaraTelefone, mascaraRg;
-    
+MaskFormatter mascaraCpf, mascaraData, mascaraTelefone, mascaraRg, mascaraCep, mascaraAgencia, mascaraContaBanc;
+public FornecedorDAO fornecedorDAO;
+public FornecedorRal fornecedor;
+
     public JDlgFornecedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setTitle("Fornecedor");
         setLocationRelativeTo(null);
-         habilitar(false);
+       
+        
+         fornecedorDAO = new FornecedorDAO();
+         
+         
+        Util.habilitar(false, jTxtCodigoFornecedor, jTxtNome, jTxtApelido, jTxtEndereco, jFmtCep, jTxtCidade, jTxtComplemento, 
+                jFmtTelefone, jTxtEmail, jFmtCpf, jFmtRg, jFmtDataNascimento, jFmtNomeContaBanc, jFmtNumAgenciaBanc, jFmtNumContaBanc, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+         
        try {
                     mascaraData = new MaskFormatter("##/##/####");
                     mascaraCpf = new MaskFormatter("###.###.###-##");
                     mascaraTelefone = new MaskFormatter("(##)####-####");
-                      mascaraRg = new MaskFormatter("#.###.###");
+                    mascaraRg = new MaskFormatter("#.###.###");
+                    mascaraCep = new MaskFormatter("####-####");
+                    mascaraAgencia = new MaskFormatter("####-#");
+                    mascaraContaBanc = new MaskFormatter("######-#");
+                    
                     
         } catch (ParseException ex) {
             Logger.getLogger(JDlgFornecedor.class.getName()).log(Level.SEVERE, null, ex);
@@ -42,99 +58,16 @@ MaskFormatter mascaraCpf, mascaraData, mascaraTelefone, mascaraRg;
           jFmtDataNascimento.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
           jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
           jFmtTelefone.setFormatterFactory(new DefaultFormatterFactory(mascaraTelefone));
-          jFmtRg.setFormatterFactory(new DefaultFormatterFactory(mascaraRg));
+          jFmtRg.setFormatterFactory(new DefaultFormatterFactory(mascaraRg)); 
+          jFmtCep.setFormatterFactory(new DefaultFormatterFactory(mascaraCep));
+          jFmtNumAgenciaBanc.setFormatterFactory(new DefaultFormatterFactory(mascaraAgencia));
+          jFmtNumContaBanc.setFormatterFactory(new DefaultFormatterFactory(mascaraContaBanc));
        
     }
     
-//    public void habilitar(){
-//      jTxtCodigoFornecedor.setEnabled(true);
-//      jTxtNome.setEnabled(true);
-//      jTxtApelido.setEnabled(true);
-//      jTxtEndereco.setEnabled(true);
-//      jTxtCep.setEnabled(true);
-//      jFmtDataNascimento.setEnabled(true);
-//      jTxtEmail.setEnabled(true);
-//      jFmtTelefone.setEnabled(true);
-//      jFmtCpf.setEnabled(true);
-//      jFmtRg.setEnabled(true);
-//      jTxtCidade.setEnabled(true);
-//      jTxtComplemento.setEnabled(true);
-//      jFmtAgenciaBancaria.setEnabled(true);
-//      jFmtTipoContaBancaria.setEnabled(true);
-//      jFmtNumeroContaBancaria.setEnabled(true);
-//        
-//  
-//    
-//    jBtnConfirmar.setEnabled(true);
-//    jBtnCancelar.setEnabled(true);
-//    
-//   jBtnIncluir.setEnabled(false);
-//   jBtnAlterar.setEnabled(false);
-//   jBtnExcluir.setEnabled(false);
-//   jBtnPesquisar.setEnabled(false); 
-//}
-//    public void desabilitar(){
-//      jTxtCodigoFornecedor.setEnabled(false);
-//      jTxtNome.setEnabled(false);
-//      jTxtApelido.setEnabled(false);
-//      jTxtEndereco.setEnabled(false);
-//      jTxtCep.setEnabled(false);
-//      jFmtDataNascimento.setEnabled(false);
-//      jTxtEmail.setEnabled(false);
-//      jFmtTelefone.setEnabled(false);
-//      jFmtCpf.setEnabled(false);
-//      jFmtRg.setEnabled(false);
-//      jTxtCidade.setEnabled(false);
-//      jTxtComplemento.setEnabled(false);
-//      jFmtAgenciaBancaria.setEnabled(false);
-//      jFmtTipoContaBancaria.setEnabled(false);
-//      jFmtNumeroContaBancaria.setEnabled(false);
-//       
-//  
-//        
-//       jBtnConfirmar.setEnabled(false);
-//       jBtnCancelar.setEnabled(false);
-//       
-//        jBtnIncluir.setEnabled(true);
-//        jBtnAlterar.setEnabled(true);
-//        jBtnExcluir.setEnabled(true);
-//        jBtnPesquisar.setEnabled(true);
-//}
-//    
-//    
-//    
-//    public void LimparCampos(){
-//        
-//       
-//        jTxtCodigoFornecedor.setText(null);
-//        jTxtNome.setText(null);
-//        jTxtApelido.setText(null);
-//        jFmtCpf.setText(null);
-//        jFmtRg.setText(null);
-//        jFmtDataNascimento.setText(null);
-//        jTxtEmail.setText(null);
-//        jFmtTelefone.setText(null);
-//        jTxtCep.setText(null);
-//        jTxtEndereco.setText(null);
-//        jTxtCidade.setText(null);
-//        jTxtComplemento.setText(null);
-//        jFmtNomeContaBanc.setText(null);
-//        jFmtNumAgenciaBanc.setText(null);
-//        jFmtNumeroContaBancaria.setText(null);
-//       
-//    }
-    
-    public void habilitar(boolean valor) {   
-        Util.habilitar(valor, jTxtCodigoFornecedor, jTxtNome, jTxtApelido,  jFmtCpf, jFmtRg,jFmtDataNascimento,
-                jTxtEmail,jFmtTelefone, jTxtCep,   jTxtEndereco, jTxtCidade, jTxtComplemento, jFmtNomeContaBanc, jFmtNumAgenciaBanc,jFmtNumContaBanc, jBtnConfirmar, jBtnCancelar);
-        Util.habilitar(!valor, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
-    }
     
-public void limpar(){   
-        Util.limparCampo( jTxtCodigoFornecedor, jTxtNome, jTxtApelido,  jFmtCpf, jFmtRg,jFmtDataNascimento,
-                jTxtEmail, jFmtTelefone, jTxtCep,   jTxtEndereco, jTxtCidade, jTxtComplemento, jFmtNomeContaBanc, jFmtNumAgenciaBanc,jFmtNumContaBanc);      
-}
+   
     
     
     public FornecedorRal viewBean(){
@@ -144,28 +77,17 @@ public void limpar(){
      fornecedor.setNomeRal( jTxtNome.getText());
      fornecedor.setApelidoRal( jTxtApelido.getText());
      fornecedor.setEnderecoRal( jTxtEndereco.getText());
-     fornecedor.setCepRal( jTxtCep.getText());
+     fornecedor.setCepRal( jFmtCep.getText());
      fornecedor.setCidadeRal( jTxtCidade.getText());
      fornecedor.setComplementoRal( jTxtComplemento.getText());
      fornecedor.setTelefoneRal( jFmtTelefone.getText());
      fornecedor.setEmailRal( jTxtEmail.getText());
      fornecedor.setCpfRal( jFmtCpf.getText());
      fornecedor.setRgRal( jFmtRg.getText());
-     
-//     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //data 
-//     try{
-//         
-//         
-//         usuarios.setDataNascimento(formato.parse( jFmtDataNascimento.getText() ));
-//         
-//         
-//     }catch (ParseException ex){
-//         Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
-//     };
-     
-   fornecedor.setNomeContaBancRal(jFmtNomeContaBanc.getText());
-   fornecedor.setNumAgenciaBancRal(jFmtNumAgenciaBanc.getText());
-   fornecedor.setNumContaBancRal(jFmtNumContaBanc.getText());
+     fornecedor.setDataNascimentoRal(Util.strDate(jFmtDataNascimento.getText()));
+     fornecedor.setNomeContaBancRal(jFmtNomeContaBanc.getText());
+     fornecedor.setNumAgenciaBancRal(jFmtNumAgenciaBanc.getText());
+     fornecedor.setNumContaBancRal(jFmtNumContaBanc.getText());   
      
         return fornecedor;
 
@@ -176,14 +98,14 @@ public void limpar(){
        jTxtNome.setText( fornecedor.getNomeRal());
        jTxtApelido.setText(fornecedor.getApelidoRal());
        jTxtEndereco.setText(fornecedor.getEnderecoRal());
-       jTxtCep.setText(fornecedor.getCepRal());
+       jFmtCep.setText(fornecedor.getCepRal());
        jTxtCidade.setText(fornecedor.getCidadeRal());
        jTxtComplemento.setText(fornecedor.getComplementoRal());
        jFmtTelefone.setText(fornecedor.getTelefoneRal());
        jTxtEmail.setText(fornecedor.getEmailRal());
        jFmtCpf.setText(fornecedor.getCpfRal());
        jFmtRg.setText(fornecedor.getRgRal());
-       //jFmtDataNascimento.setText(cliente.getDataNascimento());
+       jFmtDataNascimento.setText(Util.dateStr(fornecedor.getDataNascimentoRal()));
        jFmtNomeContaBanc.setText(fornecedor.getNomeContaBancRal());
        jFmtNumAgenciaBanc.setText(fornecedor.getNumAgenciaBancRal());
        jFmtNumContaBanc.setText(fornecedor.getNumContaBancRal());
@@ -202,15 +124,12 @@ public void limpar(){
 
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jFmtNumAgenciaBanc = new javax.swing.JTextField();
         jTxtCidade = new javax.swing.JTextField();
         jTxtEndereco = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jFmtNumContaBanc = new javax.swing.JTextField();
         jTxtCodigoFornecedor = new javax.swing.JTextField();
         jBtnAlterar = new javax.swing.JButton();
-        jTxtCep = new javax.swing.JTextField();
         jBtnExcluir = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jBtnConfirmar = new javax.swing.JButton();
@@ -236,18 +155,15 @@ public void limpar(){
         jFmtNomeContaBanc = new javax.swing.JTextField();
         jTxtEmail = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jFmtCep = new javax.swing.JFormattedTextField();
+        jFmtNumAgenciaBanc = new javax.swing.JFormattedTextField();
+        jFmtNumContaBanc = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel13.setText("Edereço");
 
         jLabel15.setText("Cidade");
-
-        jFmtNumAgenciaBanc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtNumAgenciaBancActionPerformed(evt);
-            }
-        });
 
         jLabel19.setText(" Agencia Bancaria");
 
@@ -347,6 +263,12 @@ public void limpar(){
 
         jLabel3.setText("Codigo de Fornecedor");
 
+        jFmtNumAgenciaBanc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFmtNumAgenciaBancActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -355,13 +277,13 @@ public void limpar(){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFmtNumAgenciaBanc, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFmtNumContaBanc, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel19)
+                            .addComponent(jFmtNumAgenciaBanc, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jFmtNumContaBanc))
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jFmtNomeContaBanc, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)))
@@ -371,25 +293,19 @@ public void limpar(){
                             .addComponent(jTxtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel15))
-                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel15)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel7))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel7)
+                            .addComponent(jFmtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel16))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTxtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -416,9 +332,9 @@ public void limpar(){
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jTxtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jTxtCodigoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(jTxtCodigoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(71, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(9, 9, 9)
@@ -478,8 +394,8 @@ public void limpar(){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTxtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFmtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
@@ -487,9 +403,9 @@ public void limpar(){
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jFmtNomeContaBanc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFmtNumAgenciaBanc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFmtNumContaBanc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFmtNomeContaBanc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFmtNumContaBanc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(105, 105, 105))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -507,45 +423,67 @@ public void limpar(){
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFmtNumAgenciaBancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtNumAgenciaBancActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtNumAgenciaBancActionPerformed
-
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
 
-        habilitar(true);
+       Util.habilitar(true, jTxtCodigoFornecedor, jTxtNome, jTxtApelido, jTxtEndereco, jFmtCep, jTxtCidade, jTxtComplemento, 
+                jFmtTelefone, jTxtEmail, jFmtCpf, jFmtRg, jFmtDataNascimento, jFmtNomeContaBanc, jFmtNumAgenciaBanc, jFmtNumContaBanc, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+         
         incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
-            "Pergunta", JOptionPane.YES_NO_OPTION );
+//        int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
+//            "Pergunta", JOptionPane.YES_NO_OPTION );
+//
+//        if( resp == JOptionPane.YES_OPTION){
+//            FornecedorRal fornecedor = viewBean();
+//            FornecedorDAO fornecedorDAO = new FornecedorDAO();
+//            fornecedorDAO.delete(fornecedor);
+//            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
+//        }else {
+//            JOptionPane.showMessageDialog(null, "Exclusão cancelada");
+//        }
+             if (Util.perguntar("Deseja excluir o registro?") == true) {
+                      fornecedor = viewBean();
+                      fornecedorDAO.delete(fornecedor);
+        } else {
 
-        if( resp == JOptionPane.YES_OPTION){
-            FornecedorRal fornecedor = viewBean();
-            FornecedorDAO fornecedorDAO = new FornecedorDAO();
-            fornecedorDAO.delete(fornecedor);
-            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
-        }else {
-            JOptionPane.showMessageDialog(null, "Exclusão cancelada");
+            Util.mensagem("Exclusão cancelada.");
         }
+             
+            Util.limparCampo(jTxtCodigoFornecedor, jTxtNome, jTxtApelido, jTxtEndereco, jFmtCep, jTxtCidade, jTxtComplemento, 
+                jFmtTelefone, jTxtEmail, jFmtCpf, jFmtRg, jFmtDataNascimento, jFmtNomeContaBanc, jFmtNumAgenciaBanc, jFmtNumContaBanc, jBtnCancelar, jBtnConfirmar);
+             
+             
+             
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-        FornecedorRal fornecedor = viewBean();
-        FornecedorDAO fornecedorDAO = new FornecedorDAO();
-
-        if (incluindo == true){
-
+//        FornecedorRal fornecedor = viewBean();
+//        FornecedorDAO fornecedorDAO = new FornecedorDAO();
+//
+//        if (incluindo == true){
+//
+//            fornecedorDAO.insert(fornecedor);
+//        }else{
+//
+//            fornecedorDAO.update(fornecedor);
+//        }
+        fornecedor = viewBean();        
+        if (incluindo == true) {
             fornecedorDAO.insert(fornecedor);
-        }else{
-
+        } else {
             fornecedorDAO.update(fornecedor);
-        }
+        }      
 
-        habilitar(false);
+        Util.habilitar(false, jTxtCodigoFornecedor, jTxtNome, jTxtApelido, jTxtEndereco, jFmtCep, jTxtCidade, jTxtComplemento, 
+                jFmtTelefone, jTxtEmail, jFmtCpf, jFmtRg, jFmtDataNascimento, jFmtNomeContaBanc, jFmtNumAgenciaBanc, jFmtNumContaBanc, jBtnCancelar, jBtnConfirmar);
+        
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -555,14 +493,22 @@ public void limpar(){
         //        int id = Integer.valueOf(resp);
         //        Cliente cliente =(Cliente) clienteDAO.list( id );
         //        beanView(cliente);
-//        JDlgClientePesquisar jDlgClientePesquisar = new JDlgClientePesquisar(null, true);
-//        jDlgClientePesquisar.setVisible(true);
+        JDlgFornecedorPesquisar jDlgFornecedorPesquisar = new JDlgFornecedorPesquisar(null, true);
+        
+        
+        jDlgFornecedorPesquisar.setTelaAnterior(this);
+        jDlgFornecedorPesquisar.setVisible(true);
+
+ 
+ 
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-      habilitar(false);
-        limpar();
+   Util.habilitar(false, jTxtCodigoFornecedor, jTxtNome, jTxtApelido, jTxtEndereco, jFmtCep, jTxtCidade, jTxtComplemento, 
+                jFmtTelefone, jTxtEmail, jFmtCpf, jFmtRg, jFmtDataNascimento, jFmtNomeContaBanc, jFmtNumAgenciaBanc, jFmtNumContaBanc, jBtnCancelar, jBtnConfirmar);
+   Util.habilitar(true,  jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+      Util.limparCampo(jTxtCodigoFornecedor, jTxtNome, jTxtApelido, jTxtEndereco, jFmtCep, jTxtCidade, jTxtComplemento, jFmtTelefone, jTxtEmail, jFmtCpf, jFmtRg, jFmtDataNascimento, jFmtNomeContaBanc, jFmtNumAgenciaBanc, jFmtNumContaBanc);
         JOptionPane.showMessageDialog(null, "Operação Cancelada");
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
@@ -580,14 +526,20 @@ public void limpar(){
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        habilitar(true);
-       limpar();
+ Util.habilitar(true, jTxtCodigoFornecedor, jTxtNome, jTxtApelido, jTxtEndereco, jFmtCep, jTxtCidade, jTxtComplemento, 
+                jFmtTelefone, jTxtEmail, jFmtCpf, jFmtRg, jFmtDataNascimento, jFmtNomeContaBanc, jFmtNumAgenciaBanc, jFmtNumContaBanc, jBtnCancelar, jBtnConfirmar);
+ Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limparCampo(jTxtCodigoFornecedor, jTxtNome, jTxtApelido, jTxtEndereco, jFmtCep, jTxtCidade, jTxtComplemento, jFmtTelefone, jTxtEmail, jFmtCpf, jFmtRg, jFmtDataNascimento, jFmtNomeContaBanc, jFmtNumAgenciaBanc, jFmtNumContaBanc);
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jTxtCodigoFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoFornecedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtCodigoFornecedorActionPerformed
+
+    private void jFmtNumAgenciaBancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtNumAgenciaBancActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFmtNumAgenciaBancActionPerformed
 
     
     
@@ -643,11 +595,12 @@ public void limpar(){
     private javax.swing.JButton jBtnExcluir;
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnPesquisar;
+    private javax.swing.JFormattedTextField jFmtCep;
     private javax.swing.JFormattedTextField jFmtCpf;
     private javax.swing.JFormattedTextField jFmtDataNascimento;
     private javax.swing.JTextField jFmtNomeContaBanc;
-    private javax.swing.JTextField jFmtNumAgenciaBanc;
-    private javax.swing.JTextField jFmtNumContaBanc;
+    private javax.swing.JFormattedTextField jFmtNumAgenciaBanc;
+    private javax.swing.JFormattedTextField jFmtNumContaBanc;
     private javax.swing.JFormattedTextField jFmtRg;
     private javax.swing.JFormattedTextField jFmtTelefone;
     private javax.swing.JLabel jLabel1;
@@ -666,7 +619,6 @@ public void limpar(){
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTxtApelido;
-    private javax.swing.JTextField jTxtCep;
     private javax.swing.JTextField jTxtCidade;
     private javax.swing.JTextField jTxtCodigoFornecedor;
     private javax.swing.JTextField jTxtComplemento;

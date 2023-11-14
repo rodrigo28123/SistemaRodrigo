@@ -6,24 +6,40 @@
 package testes;
 
 //import view.controle.UsuariosControle;
+import bean.UsuariosRal;
+import dao.UsuariosDAO;
+import java.util.List;
+import tools.Util;
+import view.controle.UsuariosControle;
 
 /**
  *
  * @author u07329163139
  */
 public class JDlgUsuariosNovo extends javax.swing.JDialog {
-  JDlgUsuariosNovoIA jDlgUsuariosNovoIA;
+
+    JDlgUsuariosNovoIA jDlgUsuariosNovoIA;
+    UsuariosControle usuariosControle;
+
+    UsuariosDAO usuariosDAO;
+    UsuariosRal usuarios;
+    //private JDlgUsuariosNovoIA jDlgUsuariosNovoIA;
+
     /**
      * Creates new form JDlgUsuariosNovo
      */
     public JDlgUsuariosNovo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-          setLocationRelativeTo(null);
-          setTitle("Cadastro de Usuario");
-          jDlgUsuariosNovoIA = new JDlgUsuariosNovoIA(null, modal);
+        setLocationRelativeTo(null);
+        setTitle("Cadastro de Usuario");
+        jDlgUsuariosNovoIA = new JDlgUsuariosNovoIA(null, modal);
+        usuariosControle = new UsuariosControle();
 //          UsuariosControle usuariosControle = new UsuariosControle();
 //          jTable1.setModel(usuariosControle);
+
+      
+
     }
 
     /**
@@ -104,22 +120,35 @@ public class JDlgUsuariosNovo extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        
-       
+        //viewBean()
+        // inserir o bean
+
         jDlgUsuariosNovoIA.setTitle("Inclusão");
         jDlgUsuariosNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-      
+
         jDlgUsuariosNovoIA.setTitle("alteração");
         jDlgUsuariosNovoIA.setVisible(true);
-        
+
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
+        if (Util.perguntar("Deseja excluir o registro?") == true) {
+//    UsuariosRal usuarios = viewBean();
+            int sel = jTable1.getSelectedRow();
+            usuarios = usuariosControle.getBean(sel);
+
+            usuariosDAO.delete(usuarios);
+            List lista = usuariosDAO.listAll();
+            usuariosControle.setList(lista);
+        } else {
+            Util.mensagem("exclusão nao executada");
+        }
+
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     /**

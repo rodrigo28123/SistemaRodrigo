@@ -46,11 +46,11 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://10.7.0.51:33062/db_rodrigo_ledesma?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">rodrigo_ledesma</property>
     <property name="hibernate.connection.password">rodrigo_ledesma</property>
-    <mapping class="bean.FornecedorRal"/>
-    <mapping class="bean.UsuariosRal"/>
-    <mapping class="bean.FuncionarioRal"/>
-    <mapping class="bean.ProdutoRal"/>
     <mapping class="bean.CompraRal"/>
+    <mapping class="bean.ProdutoRal"/>
+    <mapping class="bean.FornecedorRal"/>
+    <mapping class="bean.FuncionarioRal"/>
     <mapping class="bean.CompraProdutoRal"/>
+    <mapping class="bean.UsuariosRal"/>
   </session-factory>
 </hibernate-configuration>

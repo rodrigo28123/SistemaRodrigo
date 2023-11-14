@@ -1,7 +1,8 @@
 package bean;
-// Generated 14/09/2023 10:03:34 by Hibernate Tools 4.3.1
+// Generated 13/11/2023 10:45:55 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -23,27 +24,30 @@ public class ProdutoRal  implements java.io.Serializable {
 
      private int idprodutoRal;
      private String nomeRal;
-     private int quantidadeRal;
      private String descricaoRal;
      private String tamanhoRal;
-     private String precoRal;
-     private String estoqueRal;
-     
+     private double precoRal;
+ 
 
     public ProdutoRal() {
     }
 
 	
-    public ProdutoRal(int idprodutoRal, String nomeRal, int quantidadeRal, String descricaoRal, String tamanhoRal, String precoRal, String estoqueRal) {
+    public ProdutoRal(int idprodutoRal, String nomeRal, String descricaoRal, String tamanhoRal, double precoRal) {
         this.idprodutoRal = idprodutoRal;
         this.nomeRal = nomeRal;
-        this.quantidadeRal = quantidadeRal;
         this.descricaoRal = descricaoRal;
         this.tamanhoRal = tamanhoRal;
         this.precoRal = precoRal;
-        this.estoqueRal = estoqueRal;
     }
-   
+    public ProdutoRal(int idprodutoRal, String nomeRal, String descricaoRal, String tamanhoRal, double precoRal, Set compraProdutoRals) {
+       this.idprodutoRal = idprodutoRal;
+       this.nomeRal = nomeRal;
+       this.descricaoRal = descricaoRal;
+       this.tamanhoRal = tamanhoRal;
+       this.precoRal = precoRal;
+      
+    }
    
      @Id 
 
@@ -68,16 +72,6 @@ public class ProdutoRal  implements java.io.Serializable {
     }
 
     
-    @Column(name="quantidade_ral", nullable=false)
-    public int getQuantidadeRal() {
-        return this.quantidadeRal;
-    }
-    
-    public void setQuantidadeRal(int quantidadeRal) {
-        this.quantidadeRal = quantidadeRal;
-    }
-
-    
     @Column(name="descricao_ral", nullable=false, length=250)
     public String getDescricaoRal() {
         return this.descricaoRal;
@@ -98,24 +92,15 @@ public class ProdutoRal  implements java.io.Serializable {
     }
 
     
-    @Column(name="preco_ral", nullable=false, length=45)
-    public String getPrecoRal() {
+    @Column(name="preco_ral", nullable=false, precision=10)
+    public double getPrecoRal() {
         return this.precoRal;
     }
     
-    public void setPrecoRal(String precoRal) {
+    public void setPrecoRal(double precoRal) {
         this.precoRal = precoRal;
     }
 
-    
-    @Column(name="estoque_ral", nullable=false, length=45)
-    public String getEstoqueRal() {
-        return this.estoqueRal;
-    }
-    
-    public void setEstoqueRal(String estoqueRal) {
-        this.estoqueRal = estoqueRal;
-    }
 
 
 

@@ -18,6 +18,7 @@ public class FornecedorControle extends AbstractTableModel {
    
    public void setList(List lista) {
      this.lista = lista;
+      this.fireTableDataChanged();
    }
    public FornecedorRal getBean(int linha) {
         return (FornecedorRal) lista.get(linha);
@@ -41,13 +42,13 @@ public class FornecedorControle extends AbstractTableModel {
             return fornecedor.getIdfornecedorRal();
         }
         if(columnIndex == 1) {
-            return fornecedor.getNomeRal();
+            return fornecedor.getCpfRal();
         }
         if(columnIndex == 2) {
-            return fornecedor.getRgRal();
+            return fornecedor.getApelidoRal();
         }
         if(columnIndex == 3) {
-            return fornecedor.getCpfRal();
+            return fornecedor.getEmailRal();
         }
         return "";
     }
@@ -57,13 +58,13 @@ public class FornecedorControle extends AbstractTableModel {
             return "ID";
         }
         if(columnIndex == 1) {
-            return "NOME";
+            return "Cpf";
         }
         if(columnIndex == 2) {
-            return "RG";
+            return "Apelido";
         }
         if(columnIndex == 3) {
-            return "CPF";
+            return "Email";
         }
         return "";
     }

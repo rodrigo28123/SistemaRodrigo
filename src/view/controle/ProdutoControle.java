@@ -14,18 +14,20 @@ import javax.swing.table.AbstractTableModel;
  * @author PC
  */
 public class ProdutoControle extends AbstractTableModel {
-   private List lista;
-   
-   public void setList(List lista) {
-     this.lista = lista;
-   }
-   public ProdutoRal getBean(int linha) {
-        return (ProdutoRal) lista.get(linha);
+
+    private List lista;
+
+    public void setList(List lista) {
+        this.lista = lista;
+        this.fireTableDataChanged();
     }
    
+    public ProdutoRal getBean(int row) {
+        return (ProdutoRal) lista.get(row);
+    }
+    
     @Override
     public int getRowCount() {
-       
         return lista.size();
     }
 
@@ -35,38 +37,37 @@ public class ProdutoControle extends AbstractTableModel {
     }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        ProdutoRal produto =(ProdutoRal) lista.get(rowIndex);
-        if(columnIndex == 0) {
-            return produto.getIdprodutoRal();
-        }
-        if(columnIndex == 1) {
-            return produto.getNomeRal();
-        }
-        if(columnIndex == 2) {
-            return produto.getQuantidadeRal();
-        }
-        if(columnIndex == 3) {
-            return produto.getDescricaoRal();
-        }
-        return "";
+    public Object getValueAt(int row, int column) {
+        ProdutoRal produto = (ProdutoRal) lista.get(row);
+        if (column == 0) {
+           return produto.getIdprodutoRal();
+        } 
+        if (column == 1) {
+           return produto.getNomeRal();
+        } 
+        if (column == 2) {
+           return produto.getTamanhoRal();
+        } 
+        if (column == 3) {
+           return produto.getPrecoRal();
+        } 
+        return null;
     }
+
     @Override
-    public String getColumnName(int columnIndex){
-        if(columnIndex == 0) {
-            return "ID";
+    public String getColumnName(int column) {
+        if (column == 0) {
+            return "Id";
         }
-        if(columnIndex == 1) {
-            return "NOME";
+        if (column == 1) {
+            return "Nome";
         }
-        if(columnIndex == 2) {
-            return "QUANTIDADE";
+        if (column == 2) {
+            return "Tamanho";
         }
-        if(columnIndex == 3) {
-            return "PREÇO";
+        if (column == 3) {
+            return "Preço";
         }
         return "";
     }
-    
-    
 }

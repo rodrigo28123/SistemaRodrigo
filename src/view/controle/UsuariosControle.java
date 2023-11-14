@@ -19,18 +19,19 @@ import javax.swing.table.AbstractTableModel;
  * @author u07329163139
  */
 public class UsuariosControle extends AbstractTableModel {
-   private List lista;
-   
-   public void setList(List lista) {
-     this.lista = lista;
-   }
-   public UsuariosRal getBean(int linha) {
-        return (UsuariosRal) lista.get(linha);
+    private List lista;
+
+    public void setList(List lista) {
+        this.lista = lista;
+       this.fireTableDataChanged();
     }
    
+    public UsuariosRal getBean(int row) {
+        return (UsuariosRal) lista.get(row);
+    }
+    
     @Override
     public int getRowCount() {
-       
         return lista.size();
     }
 
@@ -40,35 +41,36 @@ public class UsuariosControle extends AbstractTableModel {
     }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        UsuariosRal usuarios =(UsuariosRal) lista.get(rowIndex);
-        if(columnIndex == 0) {
-            return usuarios.getIdusuariosRal();
-        }
-        if(columnIndex == 1) {
-            return usuarios.getNomeRal();
-        }
-        if(columnIndex == 2) {
-            return usuarios.getApelidoRal();
-        }
-        if(columnIndex == 3) {
-            return usuarios.getCpfRal();
-        }
-        return "";
+    public Object getValueAt(int row, int column) {
+        UsuariosRal usuariosral = (UsuariosRal) lista.get(row);
+        if (column == 0) {
+           return usuariosral.getIdusuariosRal();
+        } 
+        if (column == 1) {
+           return usuariosral.getNomeRal();
+        } 
+        if (column == 2) {
+           return usuariosral.getApelidoRal();
+        } 
+        if (column == 3) {
+           return usuariosral.getCpfRal();
+        } 
+        return null;
     }
+
     @Override
-    public String getColumnName(int columnIndex){
-        if(columnIndex == 0) {
-            return "ID";
+    public String getColumnName(int column) {
+        if (column == 0) {
+            return "Id";
         }
-        if(columnIndex == 1) {
-            return "NOME";
+        if (column == 1) {
+            return "Nome";
         }
-        if(columnIndex == 2) {
-            return "APELIDO";
+        if (column == 2) {
+            return "apelido";
         }
-        if(columnIndex == 3) {
-            return "CPF";
+        if (column == 3) {
+            return "Cpf";
         }
         return "";
     }

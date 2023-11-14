@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,8 +33,8 @@ public class CompraDAO extends DAO_Abstract {
     @Override
     public void insert(Object object) {
         session.beginTransaction();
-        session.update(object);
-        session.save(object);
+        //session.update(object);
+       session.save(object);
         session.getTransaction().commit();
     }
 
@@ -72,8 +73,36 @@ public class CompraDAO extends DAO_Abstract {
         Criteria criteria = session.createCriteria(CompraRal.class);
         List lista = criteria.list();
         session.getTransaction().commit();
-        return lista;
+        return (ArrayList) lista;
 
+    }
+    
+     public List listNotaFiscal(String notaFiscal){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(CompraRal.class);
+   criteria.add(Restrictions.like("notaFiscalRal", "%" + notaFiscal + "%"));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
+    }
+    
+    public List listCompraTotal(double compraTotal){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(CompraRal.class);
+   criteria.add(Restrictions.le("compraTotalRal", compraTotal));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
+    }
+      
+    public List listNotaFiscalCompraTotal(String notaFiscal, double compraTotal){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(CompraRal.class);
+   criteria.add(Restrictions.like("notaFiscalRal", "%" + notaFiscal + "%"));
+      criteria.add(Restrictions.le("compraTotalRal", compraTotal));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
     }
 }
 

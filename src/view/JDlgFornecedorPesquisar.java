@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testes;
+package view;
+
+import bean.FornecedorRal;
+import dao.FornecedorDAO;
+import java.util.List;
+import view.controle.FornecedorControle;
 
 /**
  *
@@ -11,14 +16,32 @@ package testes;
  */
 public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
 
+    
+    private JDlgFornecedor jDlgFornecedor;
+    FornecedorControle fornecedorControle;
     /**
      * Creates new form JDlgFornecedorPesquisar
      */
     public JDlgFornecedorPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         setLocationRelativeTo(null);
+         
+         fornecedorControle = new FornecedorControle();
+         FornecedorDAO  fornecedorDAO = new FornecedorDAO();
+         List lista = fornecedorDAO.listAll();
+         fornecedorControle.setList(lista);
+         
+         jTable1.setModel(fornecedorControle);
+         
     }
 
+    public void setTelaAnterior(JDlgFornecedor jDlgFornecedor){
+        this.jDlgFornecedor = jDlgFornecedor;
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,6 +66,11 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
         });
 
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelarActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,7 +113,18 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
 
     private void JBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnOkayActionPerformed
         // TODO add your handling code here:
+        int rowsel =  jTable1.getSelectedRow();
+        
+        FornecedorRal fornecedor = fornecedorControle.getBean(rowsel);
+        jDlgFornecedor.beanView(fornecedor);
+        this.dispose();
+        
     }//GEN-LAST:event_JBtnOkayActionPerformed
+
+    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        // TODO add your handling code here
+        this.dispose();
+    }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

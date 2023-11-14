@@ -31,12 +31,13 @@ import org.hibernate.criterion.Restrictions;
 public class ProdutoDAO extends DAO_Abstract {
 
     public ProdutoDAO() {
+      
     }
+ 
 
     @Override
     public void insert(Object object) {
         session.beginTransaction();
-        session.update(object);
         session.save(object);
         session.getTransaction().commit();
     }
@@ -76,8 +77,36 @@ public class ProdutoDAO extends DAO_Abstract {
         Criteria criteria = session.createCriteria(ProdutoRal.class);
         List lista = criteria.list();
         session.getTransaction().commit();
-        return lista;
+        return (ArrayList) lista;
 
+    }
+    
+     public List listNome(String nome){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(ProdutoRal.class);
+   criteria.add(Restrictions.like("nomeRal", "%" + nome + "%"));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
+    }
+    
+    public List listPreco(double preco){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(ProdutoRal.class);
+   criteria.add(Restrictions.le("precoRal", preco ));
+     List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
+    }
+      
+    public List listNomePreco(String nome, double preco){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(ProdutoRal.class);
+   criteria.add(Restrictions.like("nomeRal", "%" + nome + "%"));
+      criteria.add(Restrictions.le("precoRal", preco ));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
     }
 }
 

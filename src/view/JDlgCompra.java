@@ -5,6 +5,10 @@
  */
 package view;
 
+import bean.CompraRal;
+import bean.FornecedorRal;
+import bean.FuncionarioRal;
+import dao.CompraDAO;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.JOptionPane;
 import tools.Util;
@@ -14,7 +18,9 @@ import tools.Util;
  * @author u07679183120
  */
 public class JDlgCompra extends javax.swing.JDialog {
-Boolean incluindo;
+private boolean incluindo;
+public CompraRal compra;
+public CompraDAO compraDAO;
     /**
      * Creates new form JDlgUsuario
      */
@@ -24,6 +30,13 @@ Boolean incluindo;
           setTitle("Compra");
           setLocationRelativeTo(null);
           habilitar(false);
+          
+          
+          compraDAO = new CompraDAO();
+          
+                  Util.habilitar(false, jTxtCodigoCompra, jTxtFornecedor, jTxtFuncionario, jTxtValorTotal, jFmtDataCompra,
+                 jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);    
     }
     
 //   public void habilitar(){
@@ -73,16 +86,33 @@ Boolean incluindo;
 //   }
     
     
+    
+    
+    
+    
     public void habilitar(boolean valor) {   
-        Util.habilitar(valor, jTxtCodigoCompra, jTxtValorTotal, jTxtFornecedor, jTxtFuncionario, jTxtDataCompra, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(valor, jTxtCodigoCompra, jTxtValorTotal, jTxtFornecedor, jTxtFuncionario, jFmtDataCompra, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(!valor, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
     }
     
 public void limpar(){   
-        Util.limparCampo(jTxtCodigoCompra, jTxtValorTotal, jTxtFornecedor, jTxtFuncionario, jTxtDataCompra);      
+        Util.limparCampo(jTxtCodigoCompra, jTxtValorTotal, jTxtFornecedor, jTxtFuncionario, jFmtDataCompra);      
 }
 
+
+
+
+  public CompraRal viewBean() {
+        CompraRal compra = new CompraRal();
+        compra.setIdcompraRal(Util.strToInt(jTxtCodigoCompra.getText()));
+        compra.setFornecedorRal((FornecedorRal) jTxtFornecedor.getText());
+        compra.setFuncionarioRal((FuncionarioRal) jTxtFuncionario.getText());
+        compra.setCompraTotalRal(Util.strDouble(jTxtValorTotal.getText()));
+        compra.setDataCompraRal(Util.strDate(jFmtDataCompra.getText()));
+        
+        return compra;
+    }
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,10 +136,10 @@ public void limpar(){
         jTxtFornecedor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTxtDataCompra = new javax.swing.JTextField();
         jTxtValorTotal = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTxtCodigoCompra = new javax.swing.JTextField();
+        jFmtDataCompra = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -181,13 +211,13 @@ public void limpar(){
 
         jLabel9.setText("data da compra");
 
-        jTxtDataCompra.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("Código de Compra");
+
+        jFmtDataCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtDataCompraActionPerformed(evt);
+                jFmtDataCompraActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Código de Compra");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,7 +231,6 @@ public void limpar(){
                             .addComponent(jLabel2)
                             .addComponent(jTxtValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
-                            .addComponent(jTxtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBtnIncluir)
@@ -219,12 +248,14 @@ public void limpar(){
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3)
-                            .addComponent(jTxtFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                            .addComponent(jTxtFornecedor)
-                            .addComponent(jLabel1)
-                            .addComponent(jTxtCodigoCompra))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3)
+                                .addComponent(jTxtFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                                .addComponent(jTxtFornecedor)
+                                .addComponent(jLabel1)
+                                .addComponent(jTxtCodigoCompra))
+                            .addComponent(jFmtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -253,7 +284,7 @@ public void limpar(){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jFmtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnIncluir)
@@ -273,29 +304,41 @@ public void limpar(){
     }//GEN-LAST:event_jTxtFuncionarioActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
-        habilitar(true);
+          // TODO add your handling code here:
+         Util.habilitar(true, jTxtCodigoCompra, jTxtFornecedor, jTxtFuncionario, jTxtValorTotal, jFmtDataCompra,
+                 jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         incluindo = false;
         
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-    int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
-                "Pergunta", JOptionPane.YES_NO_OPTION );
-                
-        if( resp == JOptionPane.YES_OPTION){
-          
-            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
-        }else {
-          Util.mensagem("Exclusão não efetuada");
+   if (Util.perguntar("Deseja excluir o registro?") == true) {
+            compra = viewBean();
+            compraDAO.delete(compra);
+        } else {
+
+            Util.mensagem("Exclusão cancelada.");
         }
+   Util.limparCampo(jTxtCodigoCompra, jTxtValorTotal, jTxtFornecedor, jTxtFuncionario, jFmtDataCompra);      
+
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-        habilitar(false);
-        limpar();
+        
+        
+        compra = viewBean();        
+        if (incluindo == true) {
+            compraDAO.insert(compra);
+        } else {
+            compraDAO.update(compra);
+        }      
+        Util.habilitar(true, jTxtCodigoCompra, jTxtFornecedor, jTxtFuncionario, jTxtValorTotal, jFmtDataCompra,
+                 jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limparCampo(jTxtCodigoCompra, jTxtValorTotal, jTxtFornecedor, jTxtFuncionario, jFmtDataCompra); 
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -311,16 +354,20 @@ public void limpar(){
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        habilitar(true);
+       Util.habilitar(true, jTxtCodigoCompra, jTxtFornecedor, jTxtFuncionario, jTxtValorTotal, jFmtDataCompra,
+                 jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limparCampo(jTxtCodigoCompra, jTxtFornecedor, jTxtFuncionario, jTxtValorTotal, jFmtDataCompra);
+        incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jTxtFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtFornecedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtFornecedorActionPerformed
 
-    private void jTxtDataCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtDataCompraActionPerformed
+    private void jFmtDataCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataCompraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtDataCompraActionPerformed
+    }//GEN-LAST:event_jFmtDataCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,6 +421,7 @@ public void limpar(){
     private javax.swing.JButton jBtnExcluir;
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnPesquisar;
+    private javax.swing.JFormattedTextField jFmtDataCompra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -381,7 +429,6 @@ public void limpar(){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTxtCodigoCompra;
-    private javax.swing.JTextField jTxtDataCompra;
     private javax.swing.JTextField jTxtFornecedor;
     private javax.swing.JFormattedTextField jTxtFuncionario;
     private javax.swing.JTextField jTxtValorTotal;

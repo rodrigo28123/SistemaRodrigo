@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testes;
+package view;
 
 import view.JDlgUsuario;
 import bean.UsuariosRal;
@@ -21,19 +21,23 @@ public class JDlgUsuarioPesquisar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgUsuarioPesquisar1
      */
-    private JDlgUsuario JDlgUsuario;
-    UsuariosControle usuarioControle;
+    private JDlgUsuario jDlgUsuario;
+    UsuariosControle usuariosControle;
     
     public JDlgUsuarioPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        usuarioControle = new UsuariosControle();
+        usuariosControle = new UsuariosControle();
         UsuariosDAO usuarioDAO = new UsuariosDAO();
         List lista = usuarioDAO.listAll();
-        usuarioControle.setList(lista);
+        usuariosControle.setList(lista);
         
-        jTable1.setModel(usuarioControle);
+        jTable1.setModel(usuariosControle);
+    }
+    
+     public void setTelaAnterior(JDlgUsuario jDlgUsuario){
+        this.jDlgUsuario = jDlgUsuario;
     }
 
     /**
@@ -107,8 +111,8 @@ public class JDlgUsuarioPesquisar extends javax.swing.JDialog {
     private void jBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkayActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
-        UsuariosRal usuarios = usuarioControle.getBean(rowSel);
-        JDlgUsuario.beanView(usuarios);
+        UsuariosRal usuarios = usuariosControle.getBean(rowSel);
+        jDlgUsuario.beanView(usuarios);
         setVisible(false);
     }//GEN-LAST:event_jBtnOkayActionPerformed
 

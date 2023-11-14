@@ -5,12 +5,19 @@
  */
 package testes;
 
+import testes.JDlgUsuariosNovo;
+import bean.UsuariosRal;
+import tools.Util;
+
 /**
  *
  * @author u07329163139
  */
 public class JDlgUsuariosNovoIA extends javax.swing.JDialog {
 
+    JDlgUsuariosNovo jDlgUsuariosNovo;
+    
+    
     /**
      * Creates new form JDlgUsuariosNovoIA
      */
@@ -22,7 +29,37 @@ public class JDlgUsuariosNovoIA extends javax.swing.JDialog {
               
               
     }
+    public UsuariosRal viewBean(){
+   UsuariosRal usuarios = new UsuariosRal();
+     int id = Integer.valueOf( jTxtCodigo.getText());
+     usuarios.setIdusuariosRal( id );
+     usuarios.setNomeRal( jTxtNome.getText());
+     usuarios.setApelidoRal( jTxtApelido.getText());
+     usuarios.setCpfRal( jFmtCpf.getText());
+     usuarios.setDataNascimentoRal(Util.strDate(jFmtDataNascimento.getText()));
+     
+    
+//     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //data 
+//     try{
+//         
+//         
+//         usuarios.setDataNascimento(formato.parse( jFmtDataNascimento.getText() ));
+//         
+//         
+//     }catch (ParseException ex){
+//         Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
+//     };
+     
 
+     usuarios.setSenhaRal( jPwfSenha.getText());
+     usuarios.setNivelRal( jCboNivel.getSelectedIndex());
+     if(jChbAtivo.isSelected()== true) {
+         usuarios.setAtivoRal("S");
+     }else {
+         usuarios.setAtivoRal("N");
+     }
+        return usuarios;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -235,6 +272,12 @@ public class JDlgUsuariosNovoIA extends javax.swing.JDialog {
     private void jBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkayActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        UsuariosRal usuarios = viewBean();
+        jDlgUsuariosNovo.usuariosDAO.insert(usuarios);
+        
+        
+        
+        
     }//GEN-LAST:event_jBtnOkayActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

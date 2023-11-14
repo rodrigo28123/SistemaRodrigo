@@ -6,6 +6,7 @@
 package view;
 import bean.ProdutoRal;
 import dao.ProdutoDAO;
+
 import javax.swing.JOptionPane;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.text.ParseException;
@@ -24,6 +25,8 @@ import tools.Util;
  */
 public class JDlgProduto extends javax.swing.JDialog {
   Boolean incluindo;
+  public ProdutoRal produto;
+   public ProdutoDAO produtoDAO;
     /**
      * Creates new form JDlgUsuario
      */
@@ -32,7 +35,15 @@ public class JDlgProduto extends javax.swing.JDialog {
         initComponents();
           setTitle("Produto");
           setLocationRelativeTo(null);
-          habilitar(false);
+       
+      
+          
+          produtoDAO = new ProdutoDAO();
+          
+          Util.habilitar(false, jTxtCodigoProduto, jTxtNome,   jTxtDescricao, 
+                jTxtTamanho, jTxtPreco ,  jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+          
     }
     
 //   public void habilitar(){
@@ -92,31 +103,16 @@ public class JDlgProduto extends javax.swing.JDialog {
 //    jTxtPreco.setText(null);
 //  
 //   }
-    
-    
-    
-     public void habilitar(boolean valor) {   
-        Util.habilitar(valor, jTxtCodigoProduto, jTxtNome,  jTxtQuantidade, jTxtDescricao, 
-                jTxtTamanho, jTxtPreco ,  jBtnConfirmar, jBtnCancelar);
-     Util.habilitar(!valor, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-
-    }
-    
-public void limpar(){   
-        Util.limparCampo( jTxtCodigoProduto, jTxtNome,  jTxtQuantidade, jTxtDescricao, jTxtTamanho, jTxtPreco );      
-}
-    
-   
      public ProdutoRal viewBean(){
    ProdutoRal produto = new ProdutoRal();
      int id = Integer.valueOf( jTxtCodigoProduto.getText());
      produto.setIdprodutoRal( id );
      produto.setNomeRal( jTxtNome.getText());
-    // produto.setQuantidadeRal( jTxtQuantidade.getText());
+    
      produto.setDescricaoRal( jTxtDescricao.getText());
    
      produto.setTamanhoRal(jTxtTamanho .getText());
-     produto.setPrecoRal( jTxtPreco.getText());
+     produto.setPrecoRal(Util.strDouble(jTxtPreco.getText()));
    
      return produto; 
 
@@ -125,10 +121,11 @@ public void limpar(){
        String cad = String.valueOf(produto.getIdprodutoRal());
        jTxtCodigoProduto.setText(cad);
        jTxtNome.setText( produto.getNomeRal());
-      // jTxtQuantidade.setText( produto.getQuantidadeRal());
+       //jTxtQuantidade.setText( produto.getQuantidadeRal());
+       
        jTxtDescricao.setText( produto.getDescricaoRal());
        jTxtTamanho.setText( produto.getTamanhoRal());
-       jTxtPreco.setText( produto.getPrecoRal());
+       jTxtPreco.setText(Util.doubleStr(produto.getPrecoRal()) );
        
        //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //data   
      //  jFmtDataNascimento.setText( formato.format(usuarios.getDataNascimento()));
@@ -163,8 +160,6 @@ public void limpar(){
         jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTxtCodigoProduto = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTxtQuantidade = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -244,14 +239,6 @@ public void limpar(){
             }
         });
 
-        jLabel4.setText("quantidade");
-
-        jTxtQuantidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtQuantidadeActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -259,33 +246,12 @@ public void limpar(){
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(614, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(276, 276, 276))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jTxtCodigoProduto, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTxtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTxtTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel11))
-                                    .addGap(151, 151, 151)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTxtDescricao)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jTxtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBtnIncluir)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -298,7 +264,32 @@ public void limpar(){
                                 .addComponent(jBtnCancelar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBtnPesquisar)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addGap(280, 280, 280))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTxtNome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jTxtTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(142, 142, 142))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTxtDescricao)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,20 +305,16 @@ public void limpar(){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTxtTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtDescricao))
+                    .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(79, 79, 79)
+                .addComponent(jTxtDescricao)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnIncluir)
                     .addComponent(jBtnAlterar)
@@ -344,43 +331,62 @@ public void limpar(){
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        habilitar(true);
+        Util.habilitar(true, jTxtCodigoProduto, jTxtNome,  jTxtDescricao, 
+                jTxtTamanho, jTxtPreco ,  jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-   int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
-                "Pergunta", JOptionPane.YES_NO_OPTION );
-                
-        if( resp == JOptionPane.YES_OPTION){
-            ProdutoRal produto = viewBean();
-            ProdutoDAO ProdutoDAO = new ProdutoDAO();
-            ProdutoDAO.delete(produto);
-            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
-        }else {
-            JOptionPane.showMessageDialog(null, "Exclusão cancelada");
+//   int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
+//                "Pergunta", JOptionPane.YES_NO_OPTION );
+//                
+//        if( resp == JOptionPane.YES_OPTION){
+//            ProdutoRal produto = viewBean();
+//            ProdutoDAO ProdutoDAO = new ProdutoDAO();
+//            ProdutoDAO.delete(produto);
+//            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
+//        }else {
+//            JOptionPane.showMessageDialog(null, "Exclusão cancelada");
+//        }
+
+          if (Util.perguntar("Deseja excluir o registro?") == true) {
+            produto = viewBean();
+            produtoDAO.delete(produto);
+        } else {
+
+            Util.mensagem("Exclusão cancelada.");
         }
-        
+
+ Util.limparCampo(jTxtCodigoProduto, jTxtNome, jTxtDescricao, 
+                jTxtTamanho);
         
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
         
-           ProdutoRal produto = viewBean();       
-     ProdutoDAO produtoDAO = new ProdutoDAO();
-     
-    if (incluindo == true){
-      
-         produtoDAO.insert(produto);
-    }else{
-      
-        produtoDAO.update(produto);
-    }
-        habilitar(false);
-     
-     
+//           ProdutoRal produto = viewBean();       
+//     ProdutoDAO produtoDAO = new ProdutoDAO();
+//     
+//    if (incluindo == true){
+//      
+//         produtoDAO.insert(produto);
+//    }else{
+//      
+//        produtoDAO.update(produto);
+//    }
+        
+      produto = viewBean();        
+        if (incluindo == true) {
+            produtoDAO.insert(produto);
+        } else {
+            produtoDAO.update(produto);
+        }            
+      Util.habilitar(false, jTxtCodigoProduto, jTxtNome, jTxtDescricao, 
+                jTxtTamanho, jTxtPreco ,  jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -392,20 +398,27 @@ public void limpar(){
 //        beanView(produto);
 //      JDlgProdutoPesquisar jDlgProdutoPesquisar = new JDlgProdutoPesquisar(null, true);
 //      jDlgProdutoPesquisar.setVisible(true);
-
+    JDlgProdutoNovo JDlgProdutoNovo = new JDlgProdutoNovo (null, true);
+        JDlgProdutoNovo.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        habilitar(false);
-        limpar();
+         Util.habilitar(false, jTxtCodigoProduto, jTxtNome, jTxtDescricao, 
+                jTxtTamanho, jTxtPreco ,  jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+       Util.limparCampo(jTxtCodigoProduto, jTxtNome, jTxtDescricao,jTxtPreco, 
+                jTxtTamanho);
         JOptionPane.showMessageDialog(null, "Operação Cancelada");
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        habilitar(true);
-        limpar();
+         Util.habilitar(true, jTxtCodigoProduto, jTxtNome, jTxtDescricao, 
+                jTxtTamanho, jTxtPreco ,  jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limparCampo(jTxtCodigoProduto, jTxtNome,  jTxtDescricao, 
+                jTxtTamanho);
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
@@ -420,10 +433,6 @@ public void limpar(){
     private void jTxtCodigoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtCodigoProdutoActionPerformed
-
-    private void jTxtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtQuantidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtQuantidadeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -486,13 +495,11 @@ public void limpar(){
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTxtCodigoProduto;
     private javax.swing.JTextField jTxtDescricao;
     private javax.swing.JTextField jTxtNome;
     private javax.swing.JFormattedTextField jTxtPreco;
-    private javax.swing.JTextField jTxtQuantidade;
     private javax.swing.JFormattedTextField jTxtTamanho;
     // End of variables declaration//GEN-END:variables
 }
