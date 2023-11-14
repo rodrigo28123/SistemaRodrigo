@@ -1,5 +1,9 @@
 package bean;
+<<<<<<< HEAD
 // Generated 13/11/2023 10:45:55 by Hibernate Tools 4.3.1
+=======
+// Generated 19/10/2023 12:07:28 by Hibernate Tools 4.3.1
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 
 
 import java.math.BigDecimal;
@@ -30,10 +34,16 @@ public class CompraRal  implements java.io.Serializable {
      private int idcompraRal;
      private FornecedorRal fornecedorRal;
      private FuncionarioRal funcionarioRal;
+<<<<<<< HEAD
      private Date dataCompraRal;
      private double compraTotalRal;
      private String notaFiscalRal;
      
+=======
+     private String dataCompraRal;
+     private int totalRal;
+    
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 
     public CompraRal() {
     }
@@ -56,6 +66,17 @@ public class CompraRal  implements java.io.Serializable {
        this.notaFiscalRal = notaFiscalRal;
        
     }
+<<<<<<< HEAD
+=======
+    public CompraRal(int idcompraRal, FornecedorRal fornecedorRal, FuncionarioRal funcionarioRal, String dataCompraRal, int totalRal, Set compraProdutoRals) {
+       this.idcompraRal = idcompraRal;
+       this.fornecedorRal = fornecedorRal;
+       this.funcionarioRal = funcionarioRal;
+       this.dataCompraRal = dataCompraRal;
+       this.totalRal = totalRal;
+     
+    }
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
    
      @Id 
 
@@ -118,6 +139,7 @@ public class CompraRal  implements java.io.Serializable {
     public void setNotaFiscalRal(String notaFiscalRal) {
         this.notaFiscalRal = notaFiscalRal;
     }
+
 
 
 

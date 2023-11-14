@@ -7,11 +7,14 @@ package view;
 
 
 
+<<<<<<< HEAD
 import Querys.jDlgConsultaCompra;
 import Querys.jDlgConsultaFornecedor;
 import Querys.jDlgConsultaFuncionario;
 import Querys.jDlgConsultaProduto;
 import Querys.jDlgConsultasUsuarios;
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 import view.JFrmLogin;
 /**
  *
@@ -65,6 +68,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMnuCadastroFuncionario = new javax.swing.JMenuItem();
         jMnuCadastroProduto = new javax.swing.JMenuItem();
+<<<<<<< HEAD
         jMenu2 = new javax.swing.JMenu();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMnuConsultaComp = new javax.swing.JMenuItem();
@@ -72,6 +76,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMnuConsultaFun = new javax.swing.JMenuItem();
         jMnuConsultaProduto = new javax.swing.JMenuItem();
         jMnuConsultaUsu = new javax.swing.JMenuItem();
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
         jMenu13 = new javax.swing.JMenu();
         jMnuSair = new javax.swing.JMenuItem();
 
@@ -206,6 +212,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+<<<<<<< HEAD
         jMenu2.setMnemonic('c');
         jMenu2.setText("Querys");
         jMenu2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -263,6 +270,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
         jMenu13.setText("Sair");
         jMenu13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jMenu13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -355,6 +364,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         JDlgProdutoNovo.setVisible(true);
     }//GEN-LAST:event_jBtnProdutoActionPerformed
 
+<<<<<<< HEAD
     private void jMnuConsultaCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuConsultaCompActionPerformed
         // TODO add your handling code here:
          jDlgConsultaCompra JDlgConsultaCompra = new jDlgConsultaCompra(this, true);
@@ -385,6 +395,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         JDlgConsultasUsuarios.setVisible(true);
     }//GEN-LAST:event_jMnuConsultaUsuActionPerformed
 
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
     /**
      * @param args the command line arguments
      */
@@ -430,7 +442,10 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu13;
+<<<<<<< HEAD
     private javax.swing.JMenu jMenu2;
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -444,16 +459,22 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar4;
     private javax.swing.JMenuItem jMnuCadastroFuncionario;
     private javax.swing.JMenuItem jMnuCadastroProduto;
+<<<<<<< HEAD
     private javax.swing.JMenuItem jMnuConsultaComp;
     private javax.swing.JMenuItem jMnuConsultaForn;
     private javax.swing.JMenuItem jMnuConsultaFun;
     private javax.swing.JMenuItem jMnuConsultaProduto;
     private javax.swing.JMenuItem jMnuConsultaUsu;
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
     private javax.swing.JMenuItem jMnuFornecedor;
     private javax.swing.JMenuItem jMnuSair;
     private javax.swing.JMenuItem jMnuUsuarios;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+<<<<<<< HEAD
     private javax.swing.JPopupMenu.Separator jSeparator2;
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

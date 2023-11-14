@@ -35,6 +35,13 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+                      <Component id="jTxtCodigoFuncionario" min="-2" pref="106" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -95,6 +102,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTxtCodigoFuncionario" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+<<<<<<< HEAD
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -104,6 +112,11 @@
                   <Component id="jTxtNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jFmtData" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+=======
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jTxtNome" min="-2" max="-2" attributes="0"/>
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -243,6 +256,7 @@
       <Properties>
         <Property name="text" type="java.lang.String" value=" "/>
       </Properties>
+<<<<<<< HEAD
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -253,6 +267,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFmtDataActionPerformed"/>
       </Events>
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
     </Component>
   </SubComponents>
 </Form>

@@ -23,8 +23,12 @@ import tools.Util;
  */
 public class JDlgFuncionario extends javax.swing.JDialog {
 Boolean incluindo;
+<<<<<<< HEAD
 MaskFormatter mascaraCpf, mascaraRg, mascaraData;
 
+=======
+MaskFormatter mascaraCpf, mascaraRg;
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
     /**
      * Creates new form JDlgFuncionario
      */
@@ -36,20 +40,31 @@ MaskFormatter mascaraCpf, mascaraRg, mascaraData;
           
           
           
+<<<<<<< HEAD
           Util.habilitar(false,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jFmtData, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
+=======
+          Util.habilitar(false,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
           
            try {
              mascaraCpf = new MaskFormatter("###.###.###-##");
              mascaraRg = new MaskFormatter("#.###.###");
+<<<<<<< HEAD
              mascaraData = new MaskFormatter("##/##/####");
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
              
          } catch (ParseException ex) {
              Logger.getLogger(JDlgFuncionario.class.getName()).log(Level.SEVERE, null, ex);
          }
           jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
           jFmtRg.setFormatterFactory(new DefaultFormatterFactory(mascaraRg));
+<<<<<<< HEAD
          jFmtData.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
+=======
+        
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
     }
     
 //   public void habilitar(){
@@ -235,6 +250,7 @@ public void limpar(){
 
         jFmtCpf.setText(" ");
 
+<<<<<<< HEAD
         jLabel3.setText("Data de Nascimento");
 
         jFmtData.addActionListener(new java.awt.event.ActionListener() {
@@ -243,6 +259,8 @@ public void limpar(){
             }
         });
 
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -257,6 +275,12 @@ public void limpar(){
                         .addComponent(jTxtCodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+<<<<<<< HEAD
+=======
+                        .addComponent(jTxtCodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
                         .addComponent(jLabel9)
                         .addGap(142, 142, 142)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,11 +314,15 @@ public void limpar(){
                     .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jFmtData))
                 .addGap(150, 150, 150))
+=======
+                .addGap(0, 0, Short.MAX_VALUE))
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,6 +332,7 @@ public void limpar(){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTxtCodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
@@ -311,6 +340,11 @@ public void limpar(){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFmtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -373,7 +407,11 @@ public void limpar(){
         funcionarioDAO.update(funcionario);
     }
    
+<<<<<<< HEAD
     Util.habilitar(false,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jFmtData, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
+=======
+    Util.habilitar(false,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
@@ -391,18 +429,30 @@ public void limpar(){
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
      Util.habilitar(false,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jFmtData, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limparCampo(jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jFmtData,
+=======
+     Util.habilitar(false,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limparCampo(jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg,
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
                 jTxtEmail);
         JOptionPane.showMessageDialog(null, "Operação Cancelada");
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
     Util.habilitar(true,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jFmtData, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limparCampo(jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jFmtData,
+=======
+    Util.habilitar(true,  jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg, jTxtEmail ,  jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limparCampo(jTxtCodigoFuncionario, jTxtNome,  jFmtCpf, jFmtRg,
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
                 jTxtEmail);
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed

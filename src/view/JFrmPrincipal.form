@@ -155,6 +155,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+<<<<<<< HEAD
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
             <Property name="mnemonic" type="int" value="99"/>
@@ -238,6 +239,8 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
         <Menu class="javax.swing.JMenu" name="jMenu13">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sair"/>

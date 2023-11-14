@@ -75,6 +75,7 @@ public class FornecedorDAO extends DAO_Abstract {
         return (ArrayList) lista;
 
     }
+<<<<<<< HEAD
     
     
      public List listApelido(String apelido){
@@ -104,6 +105,8 @@ public class FornecedorDAO extends DAO_Abstract {
     session.getTransaction().commit();
    return  lista;
     }
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 }
 //public class FornecedorDAO extends DAO_Abstract {
 

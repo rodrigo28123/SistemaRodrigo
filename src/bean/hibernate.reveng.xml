@@ -41,10 +41,19 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="db_rodrigo_ledesma"/>
+<<<<<<< HEAD
   <table-filter match-name="fornecedor_ral"/>
   <table-filter match-name="usuarios_ral"/>
   <table-filter match-name="produto_ral"/>
   <table-filter match-name="compraProduto_ral"/>
   <table-filter match-name="funcionario_ral"/>
   <table-filter match-name="compra_ral"/>
+=======
+  <table-filter match-name="funcionario_ral"/>
+  <table-filter match-name="fornecedor_ral"/>
+  <table-filter match-name="compra_ral"/>
+  <table-filter match-name="compraProduto_ral"/>
+  <table-filter match-name="produto_ral"/>
+  <table-filter match-name="usuarios_ral"/>
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 </hibernate-reverse-engineering>

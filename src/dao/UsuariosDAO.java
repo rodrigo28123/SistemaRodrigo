@@ -85,12 +85,17 @@ public class UsuariosDAO extends DAO_Abstract {
     public List listNome(String nome){
         session.beginTransaction();
     Criteria criteria = session.createCriteria(UsuariosRal.class);
+<<<<<<< HEAD
    criteria.add(Restrictions.like("nomeRal", "%" + nome + "%"));
+=======
+   criteria.add(Restrictions.eq("nomeRal", "%" + nome + "%"));
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
    List lista = criteria.list();
     session.getTransaction().commit();
    return  lista;
     }
     
+<<<<<<< HEAD
     public List listCpf(String cpf){
         session.beginTransaction();
     Criteria criteria = session.createCriteria(UsuariosRal.class);
@@ -121,6 +126,17 @@ public class UsuariosDAO extends DAO_Abstract {
 //   return  lista;
 //
 //    }
+=======
+     public List Busca(String nome){
+        session.beginTransaction();
+    Criteria criteria = session.createCriteria(UsuariosRal.class);
+   criteria.add(Restrictions.eq("nomeRal", "%" + nome + "%"));
+   List lista = criteria.list();
+    session.getTransaction().commit();
+   return  lista;
+
+    }
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
     
      public List buscar(String cmp, String valor){
          session.beginTransaction();

@@ -18,7 +18,10 @@ public class FornecedorControle extends AbstractTableModel {
    
    public void setList(List lista) {
      this.lista = lista;
+<<<<<<< HEAD
       this.fireTableDataChanged();
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
    }
    public FornecedorRal getBean(int linha) {
         return (FornecedorRal) lista.get(linha);
@@ -42,6 +45,7 @@ public class FornecedorControle extends AbstractTableModel {
             return fornecedor.getIdfornecedorRal();
         }
         if(columnIndex == 1) {
+<<<<<<< HEAD
             return fornecedor.getCpfRal();
         }
         if(columnIndex == 2) {
@@ -49,6 +53,15 @@ public class FornecedorControle extends AbstractTableModel {
         }
         if(columnIndex == 3) {
             return fornecedor.getEmailRal();
+=======
+            return fornecedor.getNomeRal();
+        }
+        if(columnIndex == 2) {
+            return fornecedor.getRgRal();
+        }
+        if(columnIndex == 3) {
+            return fornecedor.getCpfRal();
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
         }
         return "";
     }
@@ -58,6 +71,7 @@ public class FornecedorControle extends AbstractTableModel {
             return "ID";
         }
         if(columnIndex == 1) {
+<<<<<<< HEAD
             return "Cpf";
         }
         if(columnIndex == 2) {
@@ -65,6 +79,15 @@ public class FornecedorControle extends AbstractTableModel {
         }
         if(columnIndex == 3) {
             return "Email";
+=======
+            return "NOME";
+        }
+        if(columnIndex == 2) {
+            return "RG";
+        }
+        if(columnIndex == 3) {
+            return "CPF";
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
         }
         return "";
     }

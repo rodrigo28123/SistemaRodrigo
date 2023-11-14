@@ -47,8 +47,14 @@ Contributor(s):
     <property name="hibernate.connection.username">rodrigo_ledesma</property>
     <property name="hibernate.connection.password">rodrigo_ledesma</property>
     <mapping class="bean.CompraRal"/>
+<<<<<<< HEAD
     <mapping class="bean.ProdutoRal"/>
     <mapping class="bean.FornecedorRal"/>
+=======
+    <mapping class="bean.FornecedorRal"/>
+    <mapping class="bean.ProdutoRal"/>
+    <mapping class="bean.UsuariosRal"/>
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
     <mapping class="bean.FuncionarioRal"/>
     <mapping class="bean.CompraProdutoRal"/>
     <mapping class="bean.UsuariosRal"/>

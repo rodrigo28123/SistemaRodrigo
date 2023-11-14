@@ -80,6 +80,7 @@ public class ProdutoDAO extends DAO_Abstract {
         return (ArrayList) lista;
 
     }
+<<<<<<< HEAD
     
      public List listNome(String nome){
         session.beginTransaction();
@@ -108,6 +109,8 @@ public class ProdutoDAO extends DAO_Abstract {
     session.getTransaction().commit();
    return  lista;
     }
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 }
 
 

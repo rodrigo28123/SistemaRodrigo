@@ -1,5 +1,9 @@
 package bean;
+<<<<<<< HEAD
 // Generated 13/11/2023 10:45:55 by Hibernate Tools 4.3.1
+=======
+// Generated 19/10/2023 12:07:28 by Hibernate Tools 4.3.1
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 
 
 import java.math.BigDecimal;
@@ -31,8 +35,12 @@ public class FuncionarioRal  implements java.io.Serializable {
      private Date dataNascimentoRal;
      private String emailRal;
      private String rgRal;
+<<<<<<< HEAD
      private double salarioRal;
     
+=======
+     
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 
     public FuncionarioRal() {
     }
@@ -56,6 +64,17 @@ public class FuncionarioRal  implements java.io.Serializable {
        this.salarioRal = salarioRal;
       
     }
+<<<<<<< HEAD
+=======
+    public FuncionarioRal(int idfuncionarioRal, String nomeRal, String cpfRal, String emailRal, String rgRal, Set compraRals) {
+       this.idfuncionarioRal = idfuncionarioRal;
+       this.nomeRal = nomeRal;
+       this.cpfRal = cpfRal;
+       this.emailRal = emailRal;
+       this.rgRal = rgRal;
+       
+    }
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
    
      @Id 
 
@@ -119,6 +138,7 @@ public class FuncionarioRal  implements java.io.Serializable {
         this.rgRal = rgRal;
     }
 
+<<<<<<< HEAD
     
     @Column(name="salario_ral", nullable=false, precision=10)
     public double getSalarioRal() {
@@ -128,6 +148,9 @@ public class FuncionarioRal  implements java.io.Serializable {
     public void setSalarioRal(double salarioRal) {
         this.salarioRal = salarioRal;
     }
+=======
+
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 
 
 

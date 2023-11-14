@@ -5,14 +5,18 @@
  */
 package view.controle;
 
+<<<<<<< HEAD
 import bean.CompraRal;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 /**
  *
  * @author PC
  */
+<<<<<<< HEAD
 public class CompraControle extends AbstractTableModel {
     private List lista;
 
@@ -70,5 +74,8 @@ public class CompraControle extends AbstractTableModel {
         return "";
     }
     
+=======
+public class CompraControle {
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
     
 }

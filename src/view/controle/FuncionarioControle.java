@@ -49,7 +49,11 @@ public class FuncionarioControle extends AbstractTableModel {
            return funcionario.getCpfRal();
         } 
         if (column == 3) {
+<<<<<<< HEAD
            return funcionario.getSalarioRal();
+=======
+           return funcionario.getRgRal();
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
         } 
         return null;
     }
@@ -66,7 +70,11 @@ public class FuncionarioControle extends AbstractTableModel {
             return "CPF";
         }
         if (column == 3) {
+<<<<<<< HEAD
             return "Salario";
+=======
+            return "RG";
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
         }
         return "";
     }

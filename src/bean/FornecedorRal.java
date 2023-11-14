@@ -1,5 +1,9 @@
 package bean;
+<<<<<<< HEAD
 // Generated 13/11/2023 10:45:55 by Hibernate Tools 4.3.1
+=======
+// Generated 19/10/2023 12:07:28 by Hibernate Tools 4.3.1
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 
 
 import java.util.Date;
@@ -39,7 +43,11 @@ public class FornecedorRal  implements java.io.Serializable {
      private String nomeContaBancRal;
      private String numAgenciaBancRal;
      private String numContaBancRal;
+<<<<<<< HEAD
   
+=======
+   
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 
     public FornecedorRal() {
     }
@@ -78,7 +86,11 @@ public class FornecedorRal  implements java.io.Serializable {
        this.nomeContaBancRal = nomeContaBancRal;
        this.numAgenciaBancRal = numAgenciaBancRal;
        this.numContaBancRal = numContaBancRal;
+<<<<<<< HEAD
     
+=======
+       
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
     }
    
      @Id 
@@ -235,8 +247,11 @@ public class FornecedorRal  implements java.io.Serializable {
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3426ddee926626c2bc4d2f71011e2896f6ad147d
 }
 
 
